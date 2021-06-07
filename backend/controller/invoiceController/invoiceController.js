@@ -21,9 +21,24 @@ const invoiceController = () => {
     }
   };
 
+  const updateInvoiceById = async (req, res) => {
+    try {
+      const invoice = await Invoice.findByIdAndUpdate(
+        req.params.invoiceId,
+        req.body,
+        { new: true }
+      );
+      res.json(invoice);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   return {
     getAll,
-    createInvoice
+    createInvoice,
+    updateInvoiceById
   };
 };
 
