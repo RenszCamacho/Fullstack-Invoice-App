@@ -1,4 +1,4 @@
-const Invoice = require('../models/invoiceModel');
+const Invoice = require('../../models/invoiceModel');
 
 const invoiceController = () => {
   const getAll = async (req, res) => {
@@ -15,4 +15,4 @@ const invoiceController = () => {
   };
 };
 
-module.exports = invoiceController;
+module.exports = invoiceController();
