@@ -35,10 +35,24 @@ const invoiceController = () => {
     }
   };
 
+  const deleteInvoiceById = async (req, res) => {
+    try {
+      await Invoice.findByIdAndDelete(
+        req.params.invoiceId
+      );
+      res.status(204);
+      res.send();
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   return {
     getAll,
     createInvoice,
-    updateInvoiceById
+    updateInvoiceById,
+    deleteInvoiceById
   };
 };
 

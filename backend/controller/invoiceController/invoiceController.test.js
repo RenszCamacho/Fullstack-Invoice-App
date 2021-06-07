@@ -1,4 +1,6 @@
-const { getAll, createInvoice, updateInvoiceById } = require('./invoiceController');
+const {
+  getAll, createInvoice, updateInvoiceById, deleteInvoiceById
+} = require('./invoiceController');
 const Invoice = require('../../models/invoiceModel');
 
 jest.mock('../../models/invoiceModel');
@@ -166,6 +168,65 @@ describe('invoiceController', () => {
 
         test('Then call res.send with findByIdAndUpdate error', () => {
           expect(res.send).toHaveBeenCalledWith('findByIdAndUpdate error');
+        });
+      });
+    });
+  });
+
+  describe('Given a function deleteInvoiceById', () => {
+    describe('When is invoked', () => {
+      let req;
+      let res;
+
+      describe('And there is no error', () => {
+        beforeEach(async () => {
+          req = {
+            params: { invoiceId: null }
+          };
+
+          res = {
+            status: jest.fn(),
+            send: jest.fn()
+          };
+
+          await deleteInvoiceById(req, res);
+        });
+
+        test('Then call Invoice.findByIdAndDelete once', () => {
+          expect(Invoice.findByIdAndDelete).toHaveBeenCalled();
+        });
+
+        test('Then call res.status with 204', () => {
+          expect(res.status).toHaveBeenCalledWith(204);
+        });
+
+        test('Then call res.send once', () => {
+          expect(res.status).toHaveBeenCalled();
+        });
+      });
+
+      describe('And there is an error', () => {
+        beforeEach(async () => {
+          req = {
+            params: { invoiceId: null }
+          };
+
+          res = {
+            status: jest.fn(),
+            send: jest.fn()
+          };
+
+          Invoice.findByIdAndDelete.mockRejectedValueOnce('findByIdAndDelete error');
+
+          await deleteInvoiceById(req, res);
+        });
+
+        test('Then call res.status with a 500 error', () => {
+          expect(res.status).toHaveBeenCalledWith(500);
+        });
+
+        test('Then call res.send with findByIdAndUpdate error', () => {
+          expect(res.send).toHaveBeenCalledWith('findByIdAndDelete error');
         });
       });
     });
