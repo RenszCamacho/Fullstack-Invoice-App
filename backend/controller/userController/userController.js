@@ -38,7 +38,7 @@ const userController = () => {
   const deleteUserById = async (req, res) => {
     try {
       await User.findByIdAndDelete(
-        req.params.UserId
+        req.params.userId
       );
       res.status(204);
       res.send();
