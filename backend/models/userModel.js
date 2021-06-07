@@ -9,7 +9,7 @@ const userSchema = Schema({
     postCode: String,
     country: String
   },
-  client: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
+  client: [{ type: Schema.Types.ObjectId, ref: 'Invoice' }]
 });
 
 module.exports = model('User', userSchema);
