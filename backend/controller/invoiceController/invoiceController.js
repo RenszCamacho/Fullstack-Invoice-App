@@ -7,6 +7,7 @@ const invoiceController = () => {
       res.json(invoice);
     } catch (error) {
       res.status(500);
+      res.send(error);
     }
   };
 
