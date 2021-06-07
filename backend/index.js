@@ -8,6 +8,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const userRouter = require('./routes/userRoutes');
+const clientRouter = require('./routes/clientRoutes');
 
 mongoose.connect(
   process.env.DDBB_URL,
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 app.use('/api/user', userRouter);
+app.use('/api/client', clientRouter);
 
 app.listen(PORT, () => debug(
   `${chalk.blue('Server')} is ${chalk.magenta('is runnin')} on port ${chalk.cyanBright(`http://localhost:${PORT}`)}`
