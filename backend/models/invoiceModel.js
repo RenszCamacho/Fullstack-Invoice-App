@@ -6,10 +6,11 @@ const invoiceSchema = Schema({
   clientAddress: {
     street: String,
     city: String,
-    postCode: String
+    postCode: String,
+    country: String
   },
-  invoiceDate: Number,
-  paymentTerms: Number,
+  invoiceDate: String,
+  paymentTerms: String,
   projectDescription: String,
   listItem: {
     productName: String,
