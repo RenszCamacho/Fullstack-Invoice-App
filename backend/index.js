@@ -7,8 +7,8 @@ const morgan = require('morgan');
 
 require('dotenv').config();
 
-const userRouter = require('./routes/userRoutes');
-const clientRouter = require('./routes/clientRoutes');
+const userRouter = require('./src/routes/userRoutes');
+const clientRouter = require('./src/routes/clientRoutes');
 
 mongoose.connect(
   process.env.DDBB_URL,
