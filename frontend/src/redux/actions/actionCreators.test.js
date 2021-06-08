@@ -3,7 +3,8 @@ import actionTypes from './actionTypes';
 import {
   addInvoice,
   getInvoices,
-  updateInvoice
+  updateInvoice,
+  deleteInvoice
 } from './actionCreators';
 
 jest.mock('axios');
@@ -114,6 +115,46 @@ describe('Given a function updateInvoice action creator', () => {
 
         expect(dispatch).toHaveBeenCalledWith({
           type: actionTypes.UPDATE_INVOICE_ERROR
+        });
+      });
+    });
+  });
+});
+
+describe('Given a function deleteInvoice action creator', () => {
+  describe('When is invoked', () => {
+    describe('And it is called by the dispatcher an has no errors', () => {
+      test('Then should delete the invoice', async () => {
+        const invoice = {
+          data: {
+            clientName: 'John Lennon',
+            clientEmail: 'johnlennon@beatles.com'
+          }
+        };
+
+        axios.delete.mockResolvedValueOnce(invoice);
+
+        const dispatch = jest.fn();
+        await deleteInvoice(1)(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.DELETE_INVOICE,
+          invoiceId: 1
+        });
+      });
+    });
+
+    describe('And it is called by the dispatcher an has errors', () => {
+      test('Then should dispatch an error', async () => {
+        axios.delete.mockRejectedValueOnce();
+
+        const dispatch = jest.fn();
+        await deleteInvoice()(dispatch);
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.DELETE_INVOICE_ERROR
         });
       });
     });
