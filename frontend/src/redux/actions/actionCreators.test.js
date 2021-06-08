@@ -2,7 +2,8 @@ import axios from 'axios';
 import actionTypes from './actionTypes';
 import {
   addInvoice,
-  getInvoices
+  getInvoices,
+  updateInvoice
 } from './actionCreators';
 
 jest.mock('axios');
@@ -73,6 +74,46 @@ describe('Given a function addInvoice action creator', () => {
 
         expect(dispatch).toHaveBeenCalledWith({
           type: actionTypes.CREATE_INVOICE_ERROR
+        });
+      });
+    });
+  });
+});
+
+describe('Given a function updateInvoice action creator', () => {
+  describe('When is invoked', () => {
+    describe('And it is called by the dispatcher an has no errors', () => {
+      test('Then should update the invoice', async () => {
+        const invoice = {
+          data: {
+            clientName: 'John Lennon',
+            clientEmail: 'johnlennon@beatles.com'
+          }
+        };
+
+        axios.put.mockResolvedValueOnce(invoice);
+
+        const dispatch = jest.fn();
+        await updateInvoice(invoice)(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.UPDATE_INVOICE,
+          invoice: invoice.data
+        });
+      });
+    });
+
+    describe('And it is called by the dispatcher an has errors', () => {
+      test('Then should dispatch an error', async () => {
+        axios.post.mockRejectedValue();
+
+        const dispatch = jest.fn();
+        await updateInvoice()(dispatch);
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.UPDATE_INVOICE_ERROR
         });
       });
     });
