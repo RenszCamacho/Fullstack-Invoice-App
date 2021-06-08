@@ -26,7 +26,7 @@ export function addInvoice(invoice) {
       const { data } = await axios.post(invoicesUrl, invoice);
       dispatch({
         type: actionTypes.CREATE_INVOICE,
-        invoices: data
+        invoice: data
       });
     } catch (error) {
       dispatch({
@@ -42,7 +42,7 @@ export function updateInvoice(invoice) {
       const { data } = await axios.put(`${invoicesUrl}${invoice._id}`, invoice);
       dispatch({
         type: actionTypes.UPDATE_INVOICE,
-        invoices: data
+        invoice: data
       });
     } catch (error) {
       dispatch({
