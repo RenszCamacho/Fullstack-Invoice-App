@@ -30,23 +30,50 @@ describe('Given a invoicesReducer', () => {
   });
 
   describe('When is invoked with a UPDATE_INVOICE action', () => {
-    test('Then should return the invoice modified', () => {
-      invoicesState = [{
-        _id: 1,
-        name: 'Cosme Fulanito'
-      }];
+    describe('And the ids match', () => {
+      test('Then should return the invoice modified', () => {
+        invoicesState = [{
+          _id: 1,
+          name: 'Cosme Fulanito'
+        }];
 
-      const updateInvoice = {
-        type: actionTypes.UPDATE_INVOICE,
-        invoice: { _id: 1, name: 'Mr Incognito' }
-      };
+        const updateInvoice = {
+          type: actionTypes.UPDATE_INVOICE,
+          invoice: { _id: 1, name: 'Mr Incognito' }
+        };
 
-      const result = invoicesReducer([...invoicesState], updateInvoice);
+        const result = invoicesReducer([...invoicesState], updateInvoice);
 
-      expect(result).toEqual([{
-        _id: 1,
-        name: 'Mr Incognito'
-      }]);
+        expect(result).toEqual([
+          {
+            0: { _id: 1, name: 'Cosme Fulanito' },
+            _id: 1,
+            name: 'Mr Incognito'
+          }
+        ]);
+      });
+    });
+
+    describe('And the ids does not match', () => {
+      test('Then should return the invoiceState', () => {
+        invoicesState = [{
+          _id: 1,
+          name: 'Cosme Fulanito'
+        }];
+
+        const updateInvoice = {
+          type: actionTypes.UPDATE_INVOICE,
+          invoice: { _id: 2, name: 'Mr Incognito' }
+        };
+
+        const result = invoicesReducer([...invoicesState], updateInvoice);
+
+        expect(result).toEqual([
+          [
+            { _id: 1, name: 'Cosme Fulanito' }
+          ]
+        ]);
+      });
     });
   });
 
