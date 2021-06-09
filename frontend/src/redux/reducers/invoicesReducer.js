@@ -2,7 +2,7 @@
 import actionTypes from '../actions/actionTypes';
 
 function invoicesReducer(invoicesState = [], action) {
-  let result = [...invoicesState];
+  let result;
   switch (action.type) {
     case actionTypes.GET_ALL_INVOICES:
       result = action.invoicesState;
