@@ -4,17 +4,21 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
+import configureStore from './redux/store';
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route path="/" exact component={Dashboard} />
-      </Switch>
-    </Router>
+    <Provider store={configureStore()}>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/" exact component={Dashboard} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
