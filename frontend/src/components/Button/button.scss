@@ -1,0 +1,28 @@
+@import '../../index.scss';
+
+.btn {
+	padding: 0.6rem 1rem;
+	background-color: $primary-brand-100;	
+	color: white;
+	border: none;
+	border-radius: 2.4rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 100ms ease-out;
+
+	&__icon {
+		background-color: white;
+		color: $primary-brand-100;
+		padding: 1rem;
+		margin-right: .6rem;
+		border-radius: 50%;
+	}
+
+	&__name {
+		margin-right: .5rem;
+	}
+
+	&:hover {
+		background-color: $primary-brand-200;
+	}
+}
