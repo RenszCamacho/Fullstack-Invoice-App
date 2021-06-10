@@ -12,7 +12,7 @@ describe('Given a invoicesReducer', () => {
       };
 
       const result = invoicesReducer(undefined, getInvoices);
-      expect(result).toEqual(invoicesState[0]);
+      expect(result).toEqual([invoicesState[0]]);
     });
   });
 
