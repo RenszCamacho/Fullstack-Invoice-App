@@ -3,7 +3,11 @@ import moonicon from './moon-icon.svg';
 
 function ThemeButton() {
   return (
-    <button type="button" aria-label="toggle button">
+    <button
+      className="header-container__button"
+      type="button"
+      aria-label="toggle button"
+    >
       <img src={moonicon} alt="moon" />
     </button>
   );

@@ -1,13 +1,63 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+// FONT
+$main-font: 'Spartan', sans-serif;
+
+// TEXT COLORS
+$primary-brand-100: hsl(252, 94%, 67%);
+$primary-brand-200: hsl(252, 100%, 73%);
+$primary-brand-300: hsl(233, 31%, 17%);
+$primary-brand-400: hsl(233, 30%, 21%);
+
+$secondary-brand-100: hsl(231, 73%, 93%);
+$secondary-brand-200: hsl(231, 20%, 61%);
+$secondary-brand-300: hsl(231, 37%, 63%);
+$secondary-brand-400: hsl(228, 29%, 7%);
+
+$terciary-brand-100: hsl(0, 80%, 63%);
+$terciary-brand-200: hsl(0, 100%, 80%);
+$terciary-brand-300: hsl(240, 27%, 98%);
+$terciary-brand-400: hsl(233, 30%, 11%);
+
+//Responsive Variables.
+$breakpoints: (
+  small: 375px,
+  medium: 768px,
+  large: 1020px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+
+//Responsive Function
+@mixin rwd($customBreakPoint) {
+  @if map-has-key($breakpoints, $customBreakPoint) {
+    @media screen and (min-width: map-get($breakpoints, $customBreakPoint)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $customBreakPoint) {
+      @content;
+    }
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font: {
+    size: 1.6rem;
+    family: $main-font;
+  }
+}
+
+a {
+  text-decoration: none;
 }

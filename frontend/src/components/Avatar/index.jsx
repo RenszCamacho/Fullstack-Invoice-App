@@ -3,7 +3,7 @@ import avatar from './avatar.png';
 
 function Avatar() {
   return (
-    <div>
+    <div className="header-container__avatar">
       <img src={avatar} alt="avatar" />
     </div>
   );
