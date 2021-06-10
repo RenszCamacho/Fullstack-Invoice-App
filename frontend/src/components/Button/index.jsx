@@ -1,7 +1,7 @@
 import React from 'react';
 import './button.scss';
+import PropTypes from 'prop-types';
 
-// eslint-disable-next-line react/prop-types
 function Button({ nameBtn }) {
   return (
     <button
@@ -14,5 +14,9 @@ function Button({ nameBtn }) {
     </button>
   );
 }
+
+Button.propTypes = {
+  nameBtn: PropTypes.element.isRequired
+};
 
 export default Button;
