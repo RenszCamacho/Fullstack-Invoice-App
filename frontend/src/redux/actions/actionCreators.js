@@ -2,7 +2,7 @@
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
-const invoicesUrl = process.env.REACT_APP_API_URL;
+const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
 
 export function getInvoices() {
   return async (dispatch) => {
