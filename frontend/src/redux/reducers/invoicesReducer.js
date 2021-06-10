@@ -2,38 +2,31 @@
 import actionTypes from '../actions/actionTypes';
 
 function invoicesReducer(invoicesState = [], action) {
-  let result;
   switch (action.type) {
     case actionTypes.GET_ALL_INVOICES:
-      result = action.invoicesState;
-      break;
+      return [...invoicesState, action.data];
 
     case actionTypes.CREATE_INVOICE:
-      result = [
+      return [
         ...invoicesState,
-        action.invoice
+        action.data
       ];
-      break;
 
     case actionTypes.UPDATE_INVOICE:
-      result = invoicesState.map(
+      return invoicesState.map(
         (invoice) => (invoice._id === action.invoice._id
           ? { ...invoicesState, ...action.invoice }
           : invoicesState)
       );
-      break;
 
     case actionTypes.DELETE_INVOICE:
-      result = invoicesState.filter(
+      return invoicesState.filter(
         (invoice) => invoice._id === action.invoiceId
       );
-      break;
 
     default:
-      result = invoicesState;
-      break;
+      return invoicesState;
   }
-  return result;
 }
 
 export default invoicesReducer;
