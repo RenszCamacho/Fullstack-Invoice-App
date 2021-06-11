@@ -1,0 +1,93 @@
+@import '../../index.scss';
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	width: 100%;
+    min-height: 100vh;
+    background-color: $terciary-brand-300;
+
+    &__header {
+        display: flex;
+        width: 85%;
+        margin-top: 3rem;
+    }
+
+    &__list {
+        width: 85%;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+    }
+}
+
+.header__description {
+    margin-right: auto;
+}
+
+.list__item {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    background-color: white;
+    margin-top: 2rem;
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    box-shadow: 0 10px 10px -10px hsla(232, 38%, 45%, 0.1);
+    padding: 3rem 2.5rem;
+    transition: all 100ms ease;
+
+    &:hover {
+        border: 1px solid $primary-brand-100;
+    }
+}
+
+.item {
+    &__id {
+        margin-bottom: 2rem;
+        color: $secondary-brand-400;
+        font-weight: 700;
+
+        span {
+            color: $secondary-brand-300;
+        }
+    }
+    &__paid-status {
+        grid-column: 2;
+        grid-row: 2/6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        color: hsl(34, 100%, 50%);
+        background-color: rgba(255, 145, 0, 0.075);
+        border-radius: .4rem;
+
+        em {
+            margin-right: .5rem;
+        }
+    }
+
+    &__name {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: $secondary-brand-200;
+    }
+
+    &__due-date {
+        color: $secondary-brand-300;
+        margin-bottom: 1rem;
+
+        span {
+            color: $secondary-brand-200;
+        }
+    }
+
+    &__total {
+        color: $secondary-brand-400;
+        font: {
+            weight: 700;
+            size: 1.4rem;
+        }
+    }
+}

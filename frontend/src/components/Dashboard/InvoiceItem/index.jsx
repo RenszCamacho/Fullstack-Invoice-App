@@ -7,14 +7,26 @@ function InvoiceItem({
   name,
   total
 }) {
+  const currencyFormat = (value) => new Intl.NumberFormat('es-ES', {
+    style: 'currency',
+    currency: 'EUR'
+  }).format(value);
+
   return (
-    <article>
-      <div>{idNumber}</div>
-      <div>{dueDate}</div>
-      <div>{name}</div>
-      <div>
+    <article className="list__item">
+      <div className="item__id">
+        <span>#</span>
+        {idNumber}
+      </div>
+      <div className="item__name">{name}</div>
+      <div className="item__due-date">
+        <span>Due </span>
+        {dueDate}
+      </div>
+      <div className="item__total">{currencyFormat(total)}</div>
+      <div className="item__paid-status">
         <em className="fas fa-circle" />
-        {total}
+        Pending
       </div>
     </article>
   );
