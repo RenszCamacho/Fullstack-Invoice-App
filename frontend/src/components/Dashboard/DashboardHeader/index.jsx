@@ -26,7 +26,7 @@ function DashboardHeader({ message }) {
 }
 
 DashboardHeader.propTypes = {
-  message: PropTypes.element.isRequired
+  message: PropTypes.string.isRequired
 };
 
 export default DashboardHeader;
