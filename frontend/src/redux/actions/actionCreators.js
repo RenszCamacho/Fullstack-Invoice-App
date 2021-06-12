@@ -2,7 +2,8 @@
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
-const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
+// const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
+const invoicesUrl = 'http://localhost:5000/api/client/';
 
 export function getInvoices() {
   return async (dispatch) => {
