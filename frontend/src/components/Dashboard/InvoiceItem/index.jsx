@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import currencyFormat from '../../../services/currencyFormat';
 
 function InvoiceItem({
   idNumber,
@@ -7,11 +8,6 @@ function InvoiceItem({
   name,
   total
 }) {
-  const currencyFormat = (value) => new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'EUR'
-  }).format(value);
-
   return (
     <article className="list__item">
       <div className="item__id">

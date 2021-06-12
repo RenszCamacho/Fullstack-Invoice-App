@@ -31,8 +31,10 @@ const invoiceSchema = Schema({
   items: [{
     productName: String,
     quantity: Number,
-    price: Number
-  }]
+    price: Number,
+    total: Number
+  }],
+  total: Number
 });
 
 module.exports = model('Invoice', invoiceSchema);

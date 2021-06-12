@@ -1,7 +1,7 @@
-// FONT
+/* FONT */
 $main-font: 'Spartan', sans-serif;
 
-// TEXT COLORS
+/* TEXT COLORS*/
 $primary-brand-100: hsl(252, 94%, 67%);
 $primary-brand-200: hsl(252, 100%, 73%);
 $primary-brand-300: hsl(233, 31%, 17%);
@@ -17,7 +17,7 @@ $terciary-brand-200: hsl(0, 100%, 80%);
 $terciary-brand-300: hsl(240, 27%, 98%);
 $terciary-brand-400: hsl(233, 30%, 11%);
 
-//Responsive Variables.
+/*Responsive Variables.*/
 $breakpoints: (
   small: 375px,
   medium: 768px,
@@ -26,7 +26,7 @@ $breakpoints: (
   xxlarge: 1440px,
 );
 
-//Responsive Function
+/*Responsive Function*/
 @mixin rwd($customBreakPoint) {
   @if map-has-key($breakpoints, $customBreakPoint) {
     @media screen and (min-width: map-get($breakpoints, $customBreakPoint)) {
@@ -53,9 +53,10 @@ html {
 
 body {
   font: {
-    size: 1.6rem;
+    size: 1.2rem;
     family: $main-font;
   }
+  color: $secondary-brand-400;
 }
 
 a {

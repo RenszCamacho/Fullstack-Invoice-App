@@ -6,6 +6,6 @@ import App from './App';
 
 test('renders Invoices App', () => {
   render(<App />);
-  const dashboard = screen.getByText(/dashboard/i);
+  const dashboard = screen.getByText(/Filter/i);
   expect(dashboard).toBeInTheDocument();
 });
