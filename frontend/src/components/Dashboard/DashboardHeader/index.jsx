@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import NewInvoiceBtn from '../../Buttons/NewInvoiceBtn';
-import RegularBtn from '../../Buttons/RegularBtn';
+import DeleteBtn from '../../Buttons/DeleteBtn';
 
 function DashboardHeader({ invoices }) {
   return (
@@ -20,7 +20,7 @@ function DashboardHeader({ invoices }) {
       </button>
       <div>
         {/* <NewInvoiceBtn nameBtn="New" /> */}
-        <RegularBtn nameBtn="Mark as Paid" />
+        <DeleteBtn nameBtn="Delete" />
       </div>
     </div>
   );

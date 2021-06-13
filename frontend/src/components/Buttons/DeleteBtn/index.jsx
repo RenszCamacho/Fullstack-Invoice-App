@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './deleteBtn.scss';
 
 function DeleteBtn({ nameBtn }) {
   return (
