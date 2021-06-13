@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../Button';
+// import NewInvoiceBtn from '../../Buttons/NewInvoiceBtn';
+import RegularBtn from '../../Buttons/RegularBtn';
 
 function DashboardHeader({ invoices }) {
   return (
@@ -18,7 +19,8 @@ function DashboardHeader({ invoices }) {
         <em className="fas fa-chevron-down" />
       </button>
       <div>
-        <Button nameBtn="New" />
+        {/* <NewInvoiceBtn nameBtn="New" /> */}
+        <RegularBtn nameBtn="Mark as Paid" />
       </div>
     </div>
   );

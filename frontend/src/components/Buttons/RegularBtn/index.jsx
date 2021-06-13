@@ -1,22 +1,21 @@
 import React from 'react';
-import './button.scss';
+import './regularBtn.scss';
 import PropTypes from 'prop-types';
 
-function Button({ nameBtn }) {
+function RegularBtn({ nameBtn }) {
   return (
     <button
       className="btn"
       type="button"
       aria-label="button"
     >
-      <em className="fas fa-plus btn__icon" />
       <span className="btn__name">{nameBtn}</span>
     </button>
   );
 }
 
-Button.propTypes = {
+RegularBtn.propTypes = {
   nameBtn: PropTypes.string.isRequired
 };
 
-export default Button;
+export default RegularBtn;

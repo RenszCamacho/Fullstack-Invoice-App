@@ -14,15 +14,10 @@ function Dashboard() {
   const invoices = useSelector((store) => store.invoices);
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
     if (!invoices.length) {
       dispatch(getInvoices());
     }
-  }, [invoices]);
-
-  // useEffect(() => {
-  //   dispatch(getInvoices());
-  // }, []);
+  }, []);
 
   return (
     <main className="dashboard-container">
