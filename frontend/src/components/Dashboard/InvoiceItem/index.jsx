@@ -9,7 +9,7 @@ function InvoiceItem({
   total
 }) {
   return (
-    <article className="list__item">
+    <li className="list__item">
       <div className="item__id">
         <span>#</span>
         {idNumber}
@@ -24,7 +24,7 @@ function InvoiceItem({
         <em className="fas fa-circle" />
         Pending
       </div>
-    </article>
+    </li>
   );
 }
 
