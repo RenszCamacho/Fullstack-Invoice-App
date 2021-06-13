@@ -21,6 +21,22 @@ export function getInvoices() {
   };
 }
 
+export function getOneInvoice(invoice) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${invoicesUrl}${invoice._id}`);
+      dispatch({
+        type: actionTypes.GET_ONE_INVOICES,
+        invoices: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.GET_ONE_INVOICES_ERROR
+      });
+    }
+  };
+}
+
 export function addInvoice(invoice) {
   return async (dispatch) => {
     try {
