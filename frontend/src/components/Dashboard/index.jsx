@@ -2,27 +2,42 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Header from '../Header';
 import DashboardHeader from './DashboardHeader';
 import { getInvoices } from '../../redux/actions/actionCreators';
 import InvoiceItem from './InvoiceItem';
 import './dashboard.scss';
+import NoInvoices from './NoInvoices';
 
 function Dashboard() {
   const dispatch = useDispatch();
   const invoices = useSelector((store) => store.invoices);
 
   useEffect(() => {
-    dispatch(getInvoices());
-  }, []);
+    // eslint-disable-next-line no-unused-expressions
+    if (!invoices.length) {
+      dispatch(getInvoices());
+    }
+  }, [invoices]);
+
+  // useEffect(() => {
+  //   dispatch(getInvoices());
+  // }, []);
 
   return (
     <main className="dashboard-container">
+      <Header />
       <DashboardHeader
-        invoices={`There are ${invoices.length} invoices`}
+        invoices={invoices
+          ? `There are ${invoices.length} invoices`
+          : 'No invoices'}
       />
 
-      <ul className="dashboard-container__list">
-        {
+      {
+       invoices
+         ? (
+           <ul className="dashboard-container__list">
+             {
           invoices.map(
             (invoice) => (
               <Link to="/">
@@ -41,7 +56,10 @@ function Dashboard() {
             )
           )
         }
-      </ul>
+           </ul>
+         )
+         : <NoInvoices />
+     }
     </main>
   );
 }
