@@ -1,0 +1,16 @@
+@import '../../../index.scss';
+
+.btn {
+	padding: 1.6rem 2.4rem;
+	color: white;
+	border: none;
+	border-radius: 2.4rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: background 250ms ease 0s, color 350ms ease 0s;
+	background-color: $terciary-brand-100;	
+
+	&:hover {
+		background-color: $terciary-brand-200;	
+	}
+}

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './deleteBtn.scss';
+import './editBtn.scss';
 
-function DeleteBtn({ nameBtn }) {
+function EditBtn({ nameBtn }) {
   return (
     <button
       className="btn"
@@ -14,8 +14,8 @@ function DeleteBtn({ nameBtn }) {
   );
 }
 
-DeleteBtn.propTypes = {
+EditBtn.propTypes = {
   nameBtn: PropTypes.string.isRequired
 };
 
-export default DeleteBtn;
+export default EditBtn;
