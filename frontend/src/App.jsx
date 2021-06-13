@@ -7,12 +7,14 @@ import {
 import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import configureStore from './redux/store';
+import Details from './components/Dashboard/Details';
 
 function App() {
   return (
     <Provider store={configureStore()}>
       <Router>
         <Switch>
+          <Route path="/details/:invoiceId" component={Details} />
           <Route path="/" exact component={Dashboard} />
         </Switch>
       </Router>
