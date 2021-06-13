@@ -11,6 +11,16 @@ const invoiceController = () => {
     }
   };
 
+  const getOne = async (req, res) => {
+    try {
+      const invoice = await Invoice.findById(req.params.invoiceId);
+      res.json(invoice);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   const createInvoice = async (req, res) => {
     try {
       const invoice = await Invoice.create(req.body);
@@ -50,6 +60,7 @@ const invoiceController = () => {
 
   return {
     getAll,
+    getOne,
     createInvoice,
     updateInvoiceById,
     deleteInvoiceById
