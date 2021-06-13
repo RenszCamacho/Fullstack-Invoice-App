@@ -5,19 +5,48 @@
     flex-direction: column;
     align-items: center;
 	width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     background-color: $terciary-brand-300;
+    animation: fadeIn 1.8s;
+
+    &__dashboard-header,
+    &__list {
+        width: 85%;
+    }
 
     &__dashboard-header {
         display: flex;
-        width: 85%;
         margin-top: 3rem;
     }
 
     &__list {
-        width: 85%;
         margin-top: 2rem;
         margin-bottom: 4rem;
+    }
+
+    &__no-invoices {
+        display: grid;
+        place-items: center;
+        place-content: center;
+        height: 100vh;
+        text-align: center;
+    }
+}
+
+.no-invoices {
+    &__subtitle {
+        margin-top: 4rem;
+        color: $secondary-brand-400;
+    }
+
+    &__description {
+        margin-top: 2rem;
+        line-height: 2rem;
+        color: $secondary-brand-200;
+
+        span {
+            font-weight: 700;
+        }
     }
 }
 
@@ -45,7 +74,7 @@
 .list__item {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    grid-column-gap: 5rem;
+    grid-column-gap: 3rem;
     background-color: white;
     margin-top: 2rem;
     border-radius: 0.4rem;

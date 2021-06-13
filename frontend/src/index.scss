@@ -62,3 +62,13 @@ body {
 a {
   text-decoration: none;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
