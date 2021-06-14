@@ -14,7 +14,7 @@ function Dashboard() {
   const invoices = useSelector((store) => store.invoices);
 
   useEffect(() => {
-    if (!invoices.length) {
+    if (!invoices?.length) {
       dispatch(getInvoices());
     }
   }, [invoices]);
