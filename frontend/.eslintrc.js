@@ -19,6 +19,7 @@ module.exports = {
     'react'
   ],
   rules: {
-    'comma-dangle': [2, 'never']
+    'comma-dangle': [2, 'never'],
+    'no-underscore-dangle': 0
   }
 };

@@ -4,12 +4,15 @@ import actionTypes from '../actions/actionTypes';
 function invoicesReducer(invoicesState = [], action) {
   switch (action.type) {
     case actionTypes.GET_ALL_INVOICES:
-      return [...invoicesState, action.data];
+      return action.invoices;
+
+    case actionTypes.GET_ONE_INVOICE:
+      return action.invoice;
 
     case actionTypes.CREATE_INVOICE:
       return [
         ...invoicesState,
-        action.data
+        action.invoice
       ];
 
     case actionTypes.UPDATE_INVOICE:

@@ -1,8 +1,8 @@
 import React from 'react';
-import './button.scss';
 import PropTypes from 'prop-types';
+import './newInvoiceBtn.scss';
 
-function Button({ nameBtn }) {
+function NewInvoiceBtn({ nameBtn }) {
   return (
     <button
       className="btn"
@@ -15,8 +15,8 @@ function Button({ nameBtn }) {
   );
 }
 
-Button.propTypes = {
-  nameBtn: PropTypes.element.isRequired
+NewInvoiceBtn.propTypes = {
+  nameBtn: PropTypes.string.isRequired
 };
 
-export default Button;
+export default NewInvoiceBtn;

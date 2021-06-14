@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const {
-  createInvoice, getAll, updateInvoiceById, deleteInvoiceById
+  createInvoice, getAll, updateInvoiceById, deleteInvoiceById, getOne
 } = require('../controller/invoiceController/invoiceController');
 
 const invoiceRouter = () => {
@@ -13,6 +13,7 @@ const invoiceRouter = () => {
 
   invoiceRoutes
     .route('/:invoiceId')
+    .get(getOne)
     .put(updateInvoiceById)
     .delete(deleteInvoiceById);
 
