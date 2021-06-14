@@ -18,7 +18,7 @@ function DashboardHeader({ invoices }) {
         <em className="fas fa-chevron-down" />
       </button>
       <div>
-        <NewInvoiceBtn nameBtn="New" />
+        <NewInvoiceBtn route="/form" nameBtn="New" />
       </div>
     </div>
   );
