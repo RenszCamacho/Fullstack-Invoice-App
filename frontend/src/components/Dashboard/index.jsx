@@ -35,15 +35,14 @@ function Dashboard() {
              {
           invoices.map(
             (invoice) => (
-              <Link to="/">
+              <Link key={`${invoices._id}A`} to={`/details/${invoice._id}`}>
                 <InvoiceItem
-                  key={invoice._id}
                   idNumber={
                   invoice._id
                     .toUpperCase()
                     .slice(-5)
                 }
-                  dueDate={invoice.projectDescription}
+                  dueDate={invoice.paymentTerms}
                   name={invoice.to.name}
                   total={invoice.total}
                 />
