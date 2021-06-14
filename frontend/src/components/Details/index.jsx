@@ -9,6 +9,7 @@ import currencyFormat from '../../services/currencyFormat';
 import DeleteBtn from '../Buttons/DeleteBtn';
 import RegularBtn from '../Buttons/RegularBtn';
 import EditBtn from '../Buttons/EditBtn';
+import './details.scss';
 
 function Details({ match }) {
   const dispatch = useDispatch();
@@ -22,24 +23,24 @@ function Details({ match }) {
 
   const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
   return (
-    <main>
+    <main className="details-container">
       <Header />
 
-      <Link to="/">
+      <Link className="details-container__link" to="/">
         <em className="fas fa-chevron-left" />
         <span>Go Back</span>
       </Link>
 
-      <div>
-        <p>Status</p>
-        <div>
+      <div className="details-container__status">
+        <p className="status__paragraph">Status</p>
+        <div className="status__paid-status">
           <em className="fas fa-circle" />
           Pending
         </div>
       </div>
 
-      <div>
-        <div>
+      <div className="details-container__body">
+        <div className="body__project-description">
           #
           <span>
             {invoiceId._id
@@ -49,31 +50,7 @@ function Details({ match }) {
           <h2>{invoiceId.projectDescription}</h2>
         </div>
 
-        <address>
-          {invoiceId.to.address.street}
-          <br />
-          {invoiceId.to.address.city}
-          <br />
-          {invoiceId.to.address.postCode}
-          <br />
-          {invoiceId.to.address.country}
-          <br />
-        </address>
-
-        <div>
-          <h3>Invoice Date</h3>
-          <span>{invoiceId.invoiceDate}</span>
-        </div>
-
-        <div>
-          <h3>Sent to</h3>
-          <span>{invoiceId.to.email}</span>
-        </div>
-
-        <address>
-          <h3>From to</h3>
-          {invoiceId.from.name}
-          <br />
+        <address className="body__address-to">
           {invoiceId.from.address.street}
           <br />
           {invoiceId.from.address.city}
@@ -84,31 +61,59 @@ function Details({ match }) {
           <br />
         </address>
 
-        <ul>
+        <div className="body__invoice-date">
+          <h3>Invoice Date</h3>
+          <span>{invoiceId.invoiceDate}</span>
+        </div>
+
+        <div className="body__payment-due">
+          <h3>Paymet Due</h3>
+          <span>{invoiceId.paymentTerms}</span>
+        </div>
+
+        <div className="body__sent-to">
+          <h3>Sent to</h3>
+          <span>{invoiceId.to.email}</span>
+        </div>
+
+        <address className="body__address-from">
+          <p>Bill to</p>
+          <h3>{invoiceId.to.name}</h3>
+          {invoiceId.to.address.street}
+          <br />
+          {invoiceId.to.address.city}
+          <br />
+          {invoiceId.to.address.postCode}
+          <br />
+          {invoiceId.to.address.country}
+          <br />
+        </address>
+
+        <ul className="body__list">
           {
                 invoiceId.items.map(
                   (item) => (
-                    <li key={`${item._id}A`}>
-                      <div>
+                    <li className="list__item-details" key={`${item._id}A`}>
+                      <div className="item-details__container">
                         <h3>{item.productName}</h3>
                         <span>{`${item.quantity}x ${currencyFormat(item.price)}`}</span>
                       </div>
-                      <div>{currencyFormat(multiply(item.price, item.quantity))}</div>
+                      <p className="item-details__total">{currencyFormat(multiply(item.price, item.quantity))}</p>
                     </li>
                   )
                 )
               }
-          <div>
+          <div className="list__total">
             <p>Grand Total</p>
             <p>{currencyFormat(invoiceId.total)}</p>
           </div>
         </ul>
 
-        <div>
-          <EditBtn nameBtn="Edit" />
-          <DeleteBtn nameBtn="Delete" />
-          <RegularBtn nameBtn="Mark as Paid" />
-        </div>
+      </div>
+      <div className="details-container__btn">
+        <EditBtn nameBtn="Edit" />
+        <DeleteBtn nameBtn="Delete" />
+        <RegularBtn nameBtn="Mark as Paid" />
       </div>
     </main>
   );

@@ -17,7 +17,7 @@ function Dashboard() {
     if (!invoices.length) {
       dispatch(getInvoices());
     }
-  }, []);
+  }, [invoices]);
 
   return (
     <main className="dashboard-container">
