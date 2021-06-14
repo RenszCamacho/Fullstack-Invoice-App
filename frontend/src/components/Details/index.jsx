@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneInvoice } from '../../redux/actions/actionCreators';
 import Header from '../Header';
@@ -9,6 +9,7 @@ import currencyFormat from '../../services/currencyFormat';
 import DeleteBtn from '../Buttons/DeleteBtn';
 import RegularBtn from '../Buttons/RegularBtn';
 import EditBtn from '../Buttons/EditBtn';
+import GoBack from '../Buttons/GoBack';
 import './details.scss';
 
 function Details({ match }) {
@@ -26,10 +27,11 @@ function Details({ match }) {
     <main className="details-container">
       <Header />
 
-      <Link className="details-container__link" to="/">
+      <GoBack />
+      {/* <Link className="details-container__link" to="/">
         <em className="fas fa-chevron-left" />
         <span>Go Back</span>
-      </Link>
+      </Link> */}
 
       <div className="details-container__status">
         <p className="status__paragraph">Status</p>
