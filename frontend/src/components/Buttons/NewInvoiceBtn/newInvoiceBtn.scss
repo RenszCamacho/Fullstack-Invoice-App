@@ -8,7 +8,7 @@
 	border-radius: 2.4rem;
 	font-weight: 700;
 	cursor: pointer;
-	transition: all 100ms ease-out;
+	transition: background 250ms ease 0s, color 350ms ease 0s;
 
 	&__icon {
 		background-color: white;

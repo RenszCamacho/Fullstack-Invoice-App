@@ -5,7 +5,7 @@ import './deleteBtn.scss';
 function DeleteBtn({ nameBtn }) {
   return (
     <button
-      className="btn"
+      className="btn-delete"
       type="button"
       aria-label="button"
     >

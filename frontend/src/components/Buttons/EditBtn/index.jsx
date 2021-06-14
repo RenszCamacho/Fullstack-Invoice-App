@@ -5,7 +5,7 @@ import './editBtn.scss';
 function EditBtn({ nameBtn }) {
   return (
     <button
-      className="btn"
+      className="btn-edit"
       type="button"
       aria-label="button"
     >

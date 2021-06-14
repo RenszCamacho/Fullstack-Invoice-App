@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function RegularBtn({ nameBtn }) {
   return (
     <button
-      className="btn"
+      className="btn-regular"
       type="button"
       aria-label="button"
     >
