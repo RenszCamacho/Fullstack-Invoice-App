@@ -1,0 +1,209 @@
+@import '../../index.scss';
+
+.details-container {
+    animation: fadeIn 1.8s;
+
+    &__link,
+    &__status,
+    &__body {
+        width: 85%;
+        margin: auto;
+    }
+
+    &__link {
+        display: block;
+        margin-bottom: 3rem;
+        margin-top: 4rem;
+
+        em {
+            color: $primary-brand-100;
+            margin-right: 1rem;
+        }
+
+        span {
+            color: $terciary-brand-400;
+        }
+    }
+    
+    &__status {
+        display: flex;
+        margin-bottom: 2rem;
+        justify-content: space-between;
+        background-color: white;
+        padding: 3.5rem 2.5rem;
+        border-radius: .8rem;
+        box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+    }
+
+    &__body {
+        display: grid;
+        padding: 3rem 2rem;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 2rem;
+        background-color: white;
+        margin-bottom: 6rem;
+        color: $secondary-brand-300;
+        border-radius: .8rem;
+        line-height: 2.5rem;
+        box-shadow: 0px 10px 10px -10px rgba(72, 84, 159, 0.100397);
+    }
+
+    &__btn {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+
+        button {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.status {
+    &__paragraph {
+        color: $secondary-brand-200;
+        font-size: 1.4rem;
+        padding: 1.8rem;
+    }
+
+    &__paid-status {
+        padding: 1.8rem 2.5rem;
+        color: hsl(34, 100%, 50%);
+        background-color: rgba(255, 145, 0, 0.075);
+        border-radius: .4rem;
+
+        em {
+            margin-right: 1rem;
+        }
+    }
+}
+
+.body {
+
+    &__project-description {
+        font-weight: bold;
+        grid-column: 1;
+        grid-row: 1/1;
+
+        span {
+            color: $secondary-brand-400;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+    }
+
+    &__address-to {
+        font-style: normal;
+        grid-column: 1;
+        grid-row: 2/2;
+    }
+ 
+    &__invoice-date,
+    &__payment-due,
+    &__sent-to {
+        h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+
+        span {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: $secondary-brand-400;
+        }
+    }
+
+    &__invoice-date {
+        grid-column: 1;
+        grid-row: 3/3;
+    }
+
+    &__payment-due {
+        grid-column: 1;
+        grid-row: 4/4;
+    }
+
+    &__sent-to {
+        grid-column: 1;
+        grid-row: 5/5;
+    }
+
+    &__address-from {
+        font-style: normal;
+        grid-column: 2;
+        grid-row: 3 / span 2;
+
+        p {
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: .5rem;
+        }
+
+        h3 {
+            color: $secondary-brand-400;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        grid-column: 1 / span 2;
+        grid-row: 6/6;
+        background-color: $terciary-brand-300;
+        border-top-left-radius: .8rem;
+        border-top-right-radius: .8rem;
+    }
+
+}
+
+.list {
+
+    &__item-details {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+
+        p {
+            display: grid;
+            place-items: center;
+        }
+    }
+
+    &__total {
+        background-color: $primary-brand-300;
+        color: white;
+        border-bottom-left-radius: .8rem;
+        border-bottom-right-radius: .8rem;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+
+        p:last-child {
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.item-details {
+    &__container {
+        h3 {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: $secondary-brand-400;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    }
+
+    &__total {
+        font-weight: bold;
+        color: $secondary-brand-400;
+    }
+}
