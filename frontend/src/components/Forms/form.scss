@@ -13,15 +13,9 @@
 }
 
 .form {
-    &__fieldset-from {
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        grid-gap: 1rem;
-        width: 100%;
-        border: none;
-    }
-
-    &__fieldset-to {
+    &__fieldset-from,
+    &__fieldset-to,
+    &__fieldset-date {
         display: grid;
         grid-template-columns: repeat(2,1fr);
         grid-gap: 1rem;
@@ -38,8 +32,32 @@
     }
 }
 
-.from-street {
-    &__label {
+.from-street__label {
+    grid-column: 1 / span 2;
+}
+
+.fieldset-to {
+    &__legend,
+    &__name,
+    &__email,
+    &__street,
+    &__country {
         grid-column: 1 / span 2;
     }
+}
+
+.fieldset-date {
+    &__date-picker,
+    &__payment-terms,
+    &__project-description {
+        grid-column: 1 / span 2;
+    }
+}
+
+.payment-terms__select {
+    width: 100%;
+}
+
+.input-container__input {
+    width: 100%;
 }
