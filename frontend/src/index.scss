@@ -64,6 +64,10 @@ a {
   text-decoration: none;
 }
 
+input {
+  width: 100%;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

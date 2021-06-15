@@ -1,3 +1,45 @@
 .form-container {
-	
+	&__wrap-title,
+    &__form {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.form {
+    &__fieldset-from {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 1rem;
+        width: 100%;
+        border: none;
+    }
+
+    &__fieldset-to {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 1rem;
+        width: 100%;
+        border: none;
+    }
+}
+
+.fieldset-from {
+    &__legend,
+    &__street,
+    &__country {
+        grid-column: 1 / span 2;
+    }
+}
+
+.from-street {
+    &__label {
+        grid-column: 1 / span 2;
+    }
 }
