@@ -1,0 +1,82 @@
+@import '../../../node_modules/react-datepicker/src/stylesheets/datepicker.scss';
+@import '../../index.scss';
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker {
+    background-color: white;
+    border: none;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius ;
+
+    &__header,
+    &__month,
+    &__week {
+        width: 31rem;
+    }
+    
+    &__day-name,
+    &__day,
+    &__time-name {
+        width: 3.7rem;
+        height: 3.7rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+
+    &__header {
+        background: none;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+	&__triangle {
+        display: none;
+    }
+
+    &__day-names {
+        display: none;
+    }
+
+    &__navigation--previous, 
+    &__navigation--next,
+    &__header:not(.react-datepicker__header--has-time-select){
+        height: 5rem;
+    }
+
+    &__navigation-icon::before,
+    &__year-read-view--down-arrow,
+    &__month-read-view--down-arrow,
+    &__month-year-read-view--down-arrow {
+        border-color: $primary-brand-100 !important;
+    }
+
+    &__current-month {
+        font-size: 1.4rem;
+        color: $secondary-brand-400;
+    }
+
+    &__day--keyboard-selected,
+    &__month-text--keyboard-selected,
+    &__quarter-text--keyboard-selected,
+    &__year-text--keyboard-selected {
+        background: none;
+        color: $secondary-brand-400;
+
+        &:hover {
+            background: none;
+        }
+    }
+
+    &__day:hover,
+    &__month-text:hover,
+    &__quarter-text:hover,
+    &__year-text:hover {
+        background: none;
+        color: $primary-brand-100;
+    }
+}

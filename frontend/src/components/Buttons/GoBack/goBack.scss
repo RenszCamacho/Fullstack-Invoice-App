@@ -1,0 +1,19 @@
+@import '../../../index.scss';
+
+.go-back {
+	display: block;
+    margin-bottom: 3rem;
+    margin-top: 4rem;
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
+
+    em {
+        color: $primary-brand-100;
+        margin-right: 1rem;
+    }
+
+    span {
+        color: $terciary-brand-400;
+    }
+}

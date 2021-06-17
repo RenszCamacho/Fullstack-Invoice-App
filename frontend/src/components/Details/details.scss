@@ -10,21 +10,6 @@
         margin: auto;
     }
 
-    &__link {
-        display: block;
-        margin-bottom: 3rem;
-        margin-top: 4rem;
-
-        em {
-            color: $primary-brand-100;
-            margin-right: 1rem;
-        }
-
-        span {
-            color: $terciary-brand-400;
-        }
-    }
-    
     &__status {
         display: flex;
         margin-bottom: 2rem;

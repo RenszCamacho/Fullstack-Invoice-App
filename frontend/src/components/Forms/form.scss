@@ -1,0 +1,191 @@
+@import '../../index.scss';
+@import './custom.datepiceker';
+
+.form-container {
+    background-color: white;
+
+	&__wrap-title,
+    &__form {
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.form {
+    &__fieldset-from,
+    &__fieldset-to,
+    &__fieldset-date {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 1rem;
+        width: 100%;
+        border: none;
+    }
+
+    &__fieldset-items,
+    &__fieldset-btn {
+        display: block;
+        width: 100%;
+        border: none;
+    }
+
+    &__fieldset-items {
+        margin-bottom: 10rem;
+    }
+
+    &__fieldset-btn {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 11.5rem;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+
+        &::before {
+            content: '';
+            width: 100%;
+            height: 3.5rem;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+        }
+    }
+}
+
+.fieldset-from {
+    &__legend,
+    &__street,
+    &__country {
+        grid-column: 1 / span 2;
+    }
+
+    &__legend {
+        color: $primary-brand-100;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+.from-street__label {
+    grid-column: 1 / span 2;
+    
+}
+
+.fieldset-to {
+    &__legend,
+    &__name,
+    &__email,
+    &__street,
+    &__country {
+        grid-column: 1 / span 2;
+    }
+
+    &__legend {
+        color: $primary-brand-100;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+.fieldset-date {
+    &__date-picker,
+    &__payment-terms,
+    &__project-description {
+        grid-column: 1 / span 2;
+    }
+
+    &__date-picker,
+    &__payment-terms {
+        color: $secondary-brand-300;
+        margin-top: 1rem;
+    }
+}
+
+.payment-terms__select {
+    width: 100%;
+
+}
+
+.input-container__input {
+    width: 100%;
+}
+
+.fieldset-items {
+    &__list-items {
+        list-style: none;
+    }
+
+    &__legend {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #777F98;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+
+    &__btn {
+        cursor: pointer;
+        width: 100%;
+        background-color: $terciary-brand-300;
+        color: $secondary-brand-300;
+        border-radius: 10rem;
+        border: none;
+        padding: 1rem 0;
+        margin: 3rem 0;
+    }
+}
+
+.list-items__item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    width: 100%;
+    grid-gap: 1rem;
+    margin-top: 2rem;
+}
+
+.item {
+    &__label {
+        width: 100%;
+    }
+
+    &__total-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    &__label:first-child {
+        grid-column: 1 / span 4;
+    }
+
+    &__btn {
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: 200ms all ease;
+        color: $secondary-brand-200;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+.fieldset-btn-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: inherit;
+}

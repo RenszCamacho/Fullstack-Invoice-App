@@ -1,22 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './newInvoiceBtn.scss';
 
-function NewInvoiceBtn({ nameBtn }) {
+function NewInvoiceBtn({ nameBtn, route }) {
   return (
-    <button
+    <Link
+      to={route}
       className="btn"
       type="button"
       aria-label="button"
     >
       <em className="fas fa-plus btn__icon" />
       <span className="btn__name">{nameBtn}</span>
-    </button>
+    </Link>
   );
 }
 
 NewInvoiceBtn.propTypes = {
-  nameBtn: PropTypes.string.isRequired
+  nameBtn: PropTypes.string.isRequired,
+  route: PropTypes.string.isRequired
 };
 
 export default NewInvoiceBtn;
