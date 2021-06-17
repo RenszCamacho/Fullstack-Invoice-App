@@ -1,17 +1,26 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
-import { useFieldArray } from 'react-hook-form';
-import currencyFormat from '../../services/currencyFormat';
+import React, { useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
+import PropTypes from 'prop-types';
 
-let renderCount = 0;
+// import currencyFormat from '../../services/currencyFormat';
 
-export default function Fields({ control, register }) {
-  const { fields, append, remove } = useFieldArray({
+export default function Fields({ control }) {
+  const { register, getValues } = useForm();
+  const [price, setPrice] = useState({});
+  const lastInput = {};
+
+  function multiply(index) {
+    const lastPrice = getValues(`items.${index}.price`);
+    const lastQuantity = getValues(`items.${index}.quantity`);
+    lastInput[index] = lastQuantity * (+lastPrice);
+    setPrice(price ? { ...price, ...lastInput } : lastInput);
+  }
+  const {
+    fields, append, remove
+  } = useFieldArray({
     control,
     name: 'items'
   });
-
-  renderCount += 1;
 
   return (
     <>
@@ -33,6 +42,7 @@ export default function Fields({ control, register }) {
                 {...register(`items.${index}.quantity`)}
                 placeholder="Qty"
               />
+
             </label>
 
             <label className="item__label" htmlFor="itemList">
@@ -41,18 +51,22 @@ export default function Fields({ control, register }) {
                 {...register(`items.${index}.price`)}
                 placeholder="Price"
               />
+              <button type="button" onClick={() => multiply(index)}>Right price</button>
             </label>
 
-            <div className="counter">
+            <label htmlFor="itemList" className="item__total-list">
               Total
-              <br />
-              {currencyFormat(renderCount)}
-            </div>
+              <input
+                {...register(`items.${index}.total`)}
+                value={price[index]}
+              />
+            </label>
 
             <button className="item__btn" type="button" onClick={() => remove(index)}>
               <em className="fas fa-trash" />
             </button>
           </li>
+
         ))}
       </ul>
 
@@ -69,3 +83,7 @@ export default function Fields({ control, register }) {
     </>
   );
 }
+
+Fields.propTypes = {
+  control: PropTypes.element.isRequired
+};

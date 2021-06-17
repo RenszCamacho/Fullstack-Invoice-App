@@ -158,6 +158,13 @@
         width: 100%;
     }
 
+    &__total-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
     &__label:first-child {
         grid-column: 1 / span 4;
     }
@@ -174,4 +181,11 @@
             color: red;
         }
     }
+}
+
+.fieldset-btn-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: inherit;
 }

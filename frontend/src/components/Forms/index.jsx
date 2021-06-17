@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
@@ -6,6 +7,7 @@ import Header from '../Header';
 import FieldArray from './FieldArray';
 import RegularBtn from '../Buttons/RegularBtn';
 import formatDate from '../../services/formatDay';
+import EditBtn from '../Buttons/EditBtn';
 import 'react-datepicker/dist/react-datepicker.css';
 import './form.scss';
 
@@ -13,8 +15,8 @@ const defaultValues = {
   items: [
     {
       name: 'Product Name',
-      quantity: 0,
-      price: 0
+      quantity: '0',
+      price: '0'
     }
   ]
 };
@@ -201,7 +203,14 @@ function Form() {
         </fieldset>
 
         <fieldset className="form__fieldset-btn">
-          <RegularBtn nameBtn="Save & Send" />
+          <div>
+            <EditBtn nameBtn="Cancel" />
+
+            <RegularBtn
+              nameBtn="Save & Send"
+              type="submit"
+            />
+          </div>
         </fieldset>
       </form>
     </div>
