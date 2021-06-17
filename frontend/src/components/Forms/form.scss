@@ -22,6 +22,13 @@
         width: 100%;
         border: none;
     }
+
+    &__fieldset-items,
+    &__fieldset-btn {
+        display: block;
+        width: 100%;
+        border: none;
+    }
 }
 
 .fieldset-from {
@@ -60,4 +67,26 @@
 
 .input-container__input {
     width: 100%;
+}
+
+.fieldset-items {
+    &__list-items {
+        list-style: none;
+    }
+}
+
+.list-items__item {
+    display: grid;
+    grid-template-columns: 15% 35% 35% 15%;
+    grid-gap: 1rem;
+}
+
+.item {
+    &__label {
+        width: 100%;
+    }
+
+    &__label:first-child {
+        grid-column: 1 / span 4;
+    }
 }
