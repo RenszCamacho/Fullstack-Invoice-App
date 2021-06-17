@@ -31,7 +31,7 @@ export default function Fields({ control, register }) {
               Qty.
               <input
                 {...register(`items.${index}.quantity`)}
-                placeholder="Quantity"
+                placeholder="Qty"
               />
             </label>
 
@@ -49,23 +49,22 @@ export default function Fields({ control, register }) {
               {currencyFormat(renderCount)}
             </div>
 
-            <button type="button" onClick={() => remove(index)}>
+            <button className="item__btn" type="button" onClick={() => remove(index)}>
               <em className="fas fa-trash" />
             </button>
           </li>
         ))}
       </ul>
 
-      <section>
-        <button
-          type="button"
-          onClick={() => {
-            append({ name: 'items' });
-          }}
-        >
-          + Add New Item
-        </button>
-      </section>
+      <button
+        className="fieldset-items__btn"
+        type="button"
+        onClick={() => {
+          append({ name: 'items' });
+        }}
+      >
+        + Add New Item
+      </button>
 
     </>
   );

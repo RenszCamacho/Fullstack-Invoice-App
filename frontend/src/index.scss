@@ -67,8 +67,29 @@ a {
   text-decoration: none;
 }
 
-input {
+
+input,
+select {
   width: 100%;
+  border: 1px solid $secondary-brand-100;
+  margin-top: .5rem;
+  border-radius: .3rem;
+  padding: 1rem 1rem;
+
+  &:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 1px $primary-brand-100;
+      border-radius: 0.3rem;
+  }
+}
+
+input[type=text] {
+  color: $secondary-brand-400;
+  font-weight: 600;
+}
+
+label {
+  color: $secondary-brand-300;
 }
 
 @keyframes fadeIn {

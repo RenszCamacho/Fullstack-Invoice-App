@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import GoBack from '../Buttons/GoBack';
 import Header from '../Header';
 import FieldArray from './FieldArray';
+import RegularBtn from '../Buttons/RegularBtn';
 import formatDate from '../../services/formatDay';
 import 'react-datepicker/dist/react-datepicker.css';
 import './form.scss';
@@ -164,10 +165,10 @@ function Form() {
                 />
               )}
             />
-            <em className="far fa-calendar" />
           </div>
 
           <div className="fieldset-date__payment-terms">
+            Payment Terms
             <select className="payment-terms__select" name="paymentTerms" {...register('paymentTerms', { required: true })}>
               <option value="1">Net 1 Day</option>
               <option value="7">Net 7 Day</option>
@@ -200,7 +201,7 @@ function Form() {
         </fieldset>
 
         <fieldset className="form__fieldset-btn">
-          <button type="submit">Save</button>
+          <RegularBtn nameBtn="Save & Send" />
         </fieldset>
       </form>
     </div>
