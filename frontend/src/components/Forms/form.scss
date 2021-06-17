@@ -1,3 +1,6 @@
+@import '../../index.scss';
+@import './custom.datepiceker';
+
 .form-container {
 	&__wrap-title,
     &__form {
@@ -78,6 +81,7 @@
 .list-items__item {
     display: grid;
     grid-template-columns: 15% 35% 35% 15%;
+    width: 90%;
     grid-gap: 1rem;
 }
 
