@@ -6,7 +6,7 @@ const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
 export function getInvoices() {
   return async (dispatch) => {
     try {
-      const { data } = await axios(invoicesUrl);
+      const { data } = await axios.get(invoicesUrl);
       dispatch({
         type: actionTypes.GET_ALL_INVOICES,
         invoices: data
