@@ -63,7 +63,19 @@
     &__day--keyboard-selected,
     &__month-text--keyboard-selected,
     &__quarter-text--keyboard-selected,
-    &__year-text--keyboard-selected {
+    &__year-text--keyboard-selected,
+    &__day--selected,
+    &__day--in-selecting-range,
+    &__day--in-range,
+    &__month-text--selected,
+    &__month-text--in-selecting-range,
+    &__month-text--in-range,
+    &__quarter-text--selected,
+    &__quarter-text--in-selecting-range,
+    &__quarter-text--in-range,
+    &__year-text--selected,
+    &__year-text--in-selecting-range,
+    &__year-text--in-range {
         background: none;
         color: $secondary-brand-400;
 

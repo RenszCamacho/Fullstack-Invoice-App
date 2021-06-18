@@ -3,7 +3,7 @@
 
 .form-container {
     background-color: white;
-    animation: fadeIn 1.8s;
+    animation: $animation;
 
 	&__wrap-title,
     &__form {

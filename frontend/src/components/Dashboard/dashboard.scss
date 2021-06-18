@@ -6,7 +6,7 @@
     align-items: center;
 	width: 100%;
     height: 100vh;
-    animation: fadeIn 1.8s;
+    animation: $animation;
 
     &__dashboard-header,
     &__list {
