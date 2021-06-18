@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 import Header from '../Header';
 import DashboardHeader from './DashboardHeader';
 import { getInvoices } from '../../redux/actions/actionCreators';
@@ -41,7 +42,7 @@ function Dashboard() {
                     .toUpperCase()
                     .slice(-5)
                 }
-                  dueDate={invoice.paymentTerms}
+                  dueDate={dayjs(invoice.paymentTerms).format('DD MMM YYYY')}
                   name={invoice.to.name}
                   total={invoice.items[0].total}
                   status={invoice.status ? 'Paid' : 'Pendin'}
