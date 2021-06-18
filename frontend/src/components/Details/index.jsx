@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import dayjs from 'dayjs';
 import { getOneInvoice } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
@@ -60,12 +61,12 @@ function Details({ match }) {
 
         <div className="body__invoice-date">
           <h3>Invoice Date</h3>
-          <span>{invoiceId.invoiceDate}</span>
+          <span>{dayjs(invoiceId.invoiceDate).format('DD MMM YYYY')}</span>
         </div>
 
         <div className="body__payment-due">
           <h3>Paymet Due</h3>
-          <span>{invoiceId.paymentTerms}</span>
+          <span>{dayjs(invoiceId.paymentTerms).format('DD MMM YYYY')}</span>
         </div>
 
         <div className="body__sent-to">
@@ -102,7 +103,7 @@ function Details({ match }) {
               }
           <div className="list__total">
             <p>Grand Total</p>
-            <p>{currencyFormat(invoiceId.total)}</p>
+            <p>{currencyFormat(invoiceId.items[0].total)}</p>
           </div>
         </ul>
 

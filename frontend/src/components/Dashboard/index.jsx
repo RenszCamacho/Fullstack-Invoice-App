@@ -43,7 +43,7 @@ function Dashboard() {
                 }
                   dueDate={invoice.paymentTerms}
                   name={invoice.to.name}
-                  total={invoice.total}
+                  total={invoice.items[0].total}
                   status={invoice.status ? 'Paid' : 'Pendin'}
                   styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
                 />
