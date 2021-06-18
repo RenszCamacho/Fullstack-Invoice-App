@@ -3,16 +3,16 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
+import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
 import GoBack from '../Buttons/GoBack';
 import Header from '../Header';
 import FieldArray from './FieldArray';
 import RegularBtn from '../Buttons/RegularBtn';
-import formatDate from '../../services/formatDay';
 import EditBtn from '../Buttons/EditBtn';
+import { addInvoice } from '../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
 import './form.scss';
-import { addInvoice } from '../../redux/actions/actionCreators';
 
 const defaultValues = {
   items: [
@@ -39,7 +39,6 @@ function Form({ history }) {
   });
 
   const onSubmit = (data, event) => {
-    // console.log(data);
     const newInvoice = {
       ...data
     };
@@ -178,21 +177,47 @@ function Form({ history }) {
                   selected={field.value}
                   dateFormat="d MMM yyyy"
                   minDate={new Date()}
-                  placeholderText={formatDate(new Date())}
+                  placeholderText={dayjs(new Date()).format('DD MMM YYYY')}
                 />
               )}
             />
           </div>
 
-          <div className="fieldset-date__payment-terms">
+          <div className="fieldset-date__date-picker">
             Payment Terms
-            <select className="payment-terms__select" name="paymentTerms" {...register('paymentTerms', { required: true })}>
-              <option value="1">Net 1 Day</option>
-              <option value="7">Net 7 Day</option>
-              <option value="14">Net 14 Day</option>
-              <option value="30">Net 30 Day</option>
-            </select>
+            <br />
+            <Controller
+              name="paymentTerms"
+              control={control}
+              rules={{ required: true }}
+              render={({ field }) => (
+                <DatePicker
+                  className="input-container__input"
+                  onChange={(event) => field.onChange(event)}
+                  selected={field.value}
+                  dateFormat="d MMM yyyy"
+                  minDate={new Date()}
+                  placeholderText={dayjs(new Date()).format('DD MMM YYYY')}
+                />
+              )}
+            />
           </div>
+
+          {/* <div className="fieldset-date__payment-terms">
+            Payment Terms
+            <select
+              className="payment-terms__select"
+              name="paymentTerms"
+              {...register(
+                'paymentTerms', { required: true }
+              )}
+            >
+              <option value={values.VALUE_ONE}>Net 1 Day</option>
+              <option value={values.VALUE_TWO}>Net 7 Day</option>
+              <option value={values.VALUE_THREE}>Net 14 Day</option>
+              <option value={values.VALUE_FOUR}>Net 30 Day</option>
+            </select>
+          </div> */}
 
           <div className="fieldset-date__project-description">
             <label htmlFor="projectDescription">

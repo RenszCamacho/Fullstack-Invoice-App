@@ -20,7 +20,7 @@ function Details({ match }) {
     if (!invoice?.length) {
       dispatch(getOneInvoice());
     }
-  }, [invoice]);
+  }, []);
 
   const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
   return (
