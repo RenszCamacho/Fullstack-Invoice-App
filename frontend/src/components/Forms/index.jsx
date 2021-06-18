@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-debugger */
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
+import { withRouter } from 'react-router-dom';
 import GoBack from '../Buttons/GoBack';
 import Header from '../Header';
 import FieldArray from './FieldArray';
@@ -21,7 +23,7 @@ const defaultValues = {
   ]
 };
 
-function Form() {
+function Form({ history }) {
   const {
     control,
     register,
@@ -35,6 +37,7 @@ function Form() {
 
   const onSubmit = (data, event) => {
     console.log(data);
+    history.push('/');
     event.target.reset();
   };
 
@@ -203,7 +206,7 @@ function Form() {
         </fieldset>
 
         <fieldset className="form__fieldset-btn">
-          <div>
+          <div className="fieldset-btn">
             <EditBtn nameBtn="Cancel" />
 
             <RegularBtn
@@ -217,4 +220,5 @@ function Form() {
   );
 }
 
-export default Form;
+// export default Form;
+export default withRouter(Form);

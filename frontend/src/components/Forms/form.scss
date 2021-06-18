@@ -60,6 +60,13 @@
     }
 }
 
+.fieldset-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
 .fieldset-from {
     &__legend,
     &__street,
@@ -163,6 +170,10 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+
+        input {
+            margin-left: 1rem;
+        }
     }
 
     &__label:first-child {

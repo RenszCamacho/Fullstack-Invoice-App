@@ -9,9 +9,7 @@ const invoiceSchema = Schema({
       city: String,
       postCode: String,
       country: String
-    },
-    idNumber: String,
-    idType: String
+    }
   },
   to: {
     name: String,
@@ -21,13 +19,12 @@ const invoiceSchema = Schema({
       city: String,
       postCode: String,
       country: String
-    },
-    idNumber: String,
-    idType: String
+    }
   },
   invoiceDate: String,
   paymentTerms: String,
   projectDescription: String,
+  status: Boolean,
   items: [{
     productName: String,
     quantity: Number,
