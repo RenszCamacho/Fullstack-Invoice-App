@@ -1,14 +1,12 @@
-/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
-// const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
-const invoicesUrl = 'http://localhost:5000/api/client/';
+const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
 
 export function getInvoices() {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(invoicesUrl);
+      const { data } = await axios(invoicesUrl);
       dispatch({
         type: actionTypes.GET_ALL_INVOICES,
         invoices: data

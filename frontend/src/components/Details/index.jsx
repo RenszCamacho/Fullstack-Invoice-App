@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
-// import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOneInvoice } from '../../redux/actions/actionCreators';
 import Header from '../Header';
@@ -28,16 +27,12 @@ function Details({ match }) {
       <Header />
 
       <GoBack />
-      {/* <Link className="details-container__link" to="/">
-        <em className="fas fa-chevron-left" />
-        <span>Go Back</span>
-      </Link> */}
 
       <div className="details-container__status">
         <p className="status__paragraph">Status</p>
-        <div className="status__paid-status">
+        <div className={invoiceId.status ? 'status__paid-status' : 'status__pending-status'}>
           <em className="fas fa-circle" />
-          Pending
+          {invoiceId.status ? 'Paid' : 'Pending'}
         </div>
       </div>
 
@@ -115,7 +110,7 @@ function Details({ match }) {
       <div className="details-container__btn">
         <EditBtn nameBtn="Edit" />
         <DeleteBtn nameBtn="Delete" />
-        <RegularBtn nameBtn="Mark as Paid" />
+        {!invoiceId.status && <RegularBtn nameBtn="Mark as Paid" />}
       </div>
     </main>
   );

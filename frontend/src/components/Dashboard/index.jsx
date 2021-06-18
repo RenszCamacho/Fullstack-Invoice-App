@@ -16,19 +16,19 @@ function Dashboard() {
     if (!invoices?.length) {
       dispatch(getInvoices());
     }
-  }, [invoices]);
+  }, []);
 
   return (
     <main className="dashboard-container">
       <Header />
       <DashboardHeader
-        invoices={invoices
+        invoices={invoices.length
           ? `There are ${invoices.length} invoices`
           : 'No invoices'}
       />
 
       {
-       invoices
+       invoices.length
          ? (
            <ul className="dashboard-container__list">
              {
@@ -44,6 +44,8 @@ function Dashboard() {
                   dueDate={invoice.paymentTerms}
                   name={invoice.to.name}
                   total={invoice.total}
+                  status={invoice.status ? 'Paid' : 'Pendin'}
+                  styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
                 />
               </Link>
             )

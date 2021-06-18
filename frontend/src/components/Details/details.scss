@@ -53,10 +53,21 @@
         padding: 1.8rem;
     }
 
-    &__paid-status {
+    &__pending-status {
         padding: 1.8rem 2.5rem;
         color: hsl(34, 100%, 50%);
         background-color: rgba(255, 145, 0, 0.075);
+        border-radius: .4rem;
+
+        em {
+            margin-right: 1rem;
+        }
+    }
+
+    &__paid-status {
+        padding: 1.8rem 2.5rem;
+        color: #33D69F;
+        background-color: rgba(51, 214, 160, 0.075);
         border-radius: .4rem;
 
         em {

@@ -6,7 +6,9 @@ function InvoiceItem({
   idNumber,
   dueDate,
   name,
-  total
+  total,
+  status,
+  styles
 }) {
   return (
     <li className="list__item">
@@ -20,9 +22,9 @@ function InvoiceItem({
         {dueDate}
       </div>
       <div className="item__total">{currencyFormat(total)}</div>
-      <div className="item__paid-status">
+      <div className={styles}>
         <em className="fas fa-circle" />
-        Pending
+        {status}
       </div>
     </li>
   );
@@ -31,8 +33,10 @@ function InvoiceItem({
 InvoiceItem.propTypes = {
   idNumber: PropTypes.string.isRequired,
   dueDate: PropTypes.string.isRequired,
+  styles: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  total: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
+  status: PropTypes.number.isRequired
 };
 
 export default InvoiceItem;

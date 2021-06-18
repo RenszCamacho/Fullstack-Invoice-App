@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+/* eslint-disable no-debugger */
+import React from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
-
-// import currencyFormat from '../../services/currencyFormat';
 
 export default function Fields({ control }) {
-  const { register, getValues } = useForm();
-  const [price, setPrice] = useState({});
+  const { register, getValues, setValue } = useForm();
   const lastInput = {};
 
   function multiply(index) {
     const lastPrice = getValues(`items.${index}.price`);
     const lastQuantity = getValues(`items.${index}.quantity`);
     lastInput[index] = lastQuantity * (+lastPrice);
-    setPrice(price ? { ...price, ...lastInput } : lastInput);
+    return lastInput[index];
   }
   const {
     fields, append, remove
@@ -51,14 +49,13 @@ export default function Fields({ control }) {
                 {...register(`items.${index}.price`)}
                 placeholder="Price"
               />
-              <button type="button" onClick={() => multiply(index)}>Right price</button>
+              <button type="button" onClick={() => setValue(`items.${index}.total`, multiply(index))}>Right price</button>
             </label>
 
             <label htmlFor="itemList" className="item__total-list">
               Total
               <input
                 {...register(`items.${index}.total`)}
-                value={price[index]}
               />
             </label>
 
@@ -83,7 +80,3 @@ export default function Fields({ control }) {
     </>
   );
 }
-
-Fields.propTypes = {
-  control: PropTypes.element.isRequired
-};
