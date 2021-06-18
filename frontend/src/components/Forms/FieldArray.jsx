@@ -51,10 +51,11 @@ export default function Fields({ control }) {
               />
             </label>
 
-            <label className="item__label" htmlFor="itemList">
+            <label className="item__label item__label--total" htmlFor="itemList">
               Total
               <input
                 {...register(`items.${index}.total`)}
+                disabled="true"
               />
             </label>
 

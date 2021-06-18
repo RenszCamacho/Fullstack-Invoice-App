@@ -165,6 +165,7 @@
         width: 100%;
     }
 
+
     &__total-list {
         display: flex;
         justify-content: center;
@@ -191,6 +192,13 @@
         &:hover {
             color: red;
         }
+    }
+}
+
+.item__label--total {
+    input {
+        background: none;
+        border: none;
     }
 }
 
