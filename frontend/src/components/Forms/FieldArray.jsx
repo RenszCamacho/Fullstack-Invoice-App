@@ -49,10 +49,9 @@ export default function Fields({ control }) {
                 {...register(`items.${index}.price`)}
                 placeholder="Price"
               />
-              <button type="button" onClick={() => setValue(`items.${index}.total`, multiply(index))}>Right price</button>
             </label>
 
-            <label htmlFor="itemList" className="item__total-list">
+            <label className="item__label" htmlFor="itemList">
               Total
               <input
                 {...register(`items.${index}.total`)}
@@ -61,6 +60,16 @@ export default function Fields({ control }) {
 
             <button className="item__btn" type="button" onClick={() => remove(index)}>
               <em className="fas fa-trash" />
+            </button>
+
+            <button
+              className="fieldset-items__btn"
+              type="button"
+              onClick={
+              () => setValue(`items.${index}.total`, multiply(index))
+              }
+            >
+              Get Total
             </button>
           </li>
 
