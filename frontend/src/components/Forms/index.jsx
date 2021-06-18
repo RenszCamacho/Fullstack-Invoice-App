@@ -206,6 +206,11 @@ function Form({ history }) {
             }}
           />
 
+          <label style={{ display: 'none' }} htmlFor="isPaid">
+            Paid
+            <input name="isPaid" type="checkbox" {...register('status')} />
+          </label>
+
         </fieldset>
 
         <fieldset className="form__fieldset-btn">
