@@ -2,6 +2,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
+import { withRouter } from 'react-router-dom';
 import GoBack from '../Buttons/GoBack';
 import Header from '../Header';
 import FieldArray from './FieldArray';
@@ -217,4 +218,5 @@ function Form() {
   );
 }
 
-export default Form;
+// export default Form;
+export default withRouter(Form);
