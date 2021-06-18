@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-debugger */
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -22,7 +23,7 @@ const defaultValues = {
   ]
 };
 
-function Form() {
+function Form({ history }) {
   const {
     control,
     register,
@@ -36,6 +37,7 @@ function Form() {
 
   const onSubmit = (data, event) => {
     console.log(data);
+    history.push('/');
     event.target.reset();
   };
 
@@ -204,7 +206,7 @@ function Form() {
         </fieldset>
 
         <fieldset className="form__fieldset-btn">
-          <div>
+          <div className="fieldset-btn">
             <EditBtn nameBtn="Cancel" />
 
             <RegularBtn
