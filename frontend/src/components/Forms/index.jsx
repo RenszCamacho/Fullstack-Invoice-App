@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-debugger */
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
@@ -41,13 +40,17 @@ function Form({ history }) {
     event.target.reset();
   };
 
+  function redirect() {
+    history.push('/');
+  }
+
   return (
     <div className="form-container">
       <Header />
       <GoBack />
 
       <div className="form-container__wrap-title">
-        <h2>New Invoice</h2>
+        <h2>Invoice</h2>
       </div>
 
       <form className="form-container__form" onSubmit={handleSubmit(onSubmit)}>
@@ -207,7 +210,10 @@ function Form({ history }) {
 
         <fieldset className="form__fieldset-btn">
           <div className="fieldset-btn">
-            <EditBtn nameBtn="Cancel" />
+            <EditBtn
+              nameBtn="Cancel"
+              onClick={redirect}
+            />
 
             <RegularBtn
               nameBtn="Save & Send"
@@ -220,5 +226,4 @@ function Form({ history }) {
   );
 }
 
-// export default Form;
 export default withRouter(Form);
