@@ -18,7 +18,7 @@ function InvoiceItem({
       </div>
       <div className="item__name">{name}</div>
       <div className="item__due-date">
-        <span>Due </span>
+        <span>Due</span>
         {dueDate}
       </div>
       <div className="item__total">{currencyFormat(total)}</div>
