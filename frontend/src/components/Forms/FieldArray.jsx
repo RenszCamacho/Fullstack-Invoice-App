@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-debugger */
 import React from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { useFieldArray } from 'react-hook-form';
 
-export default function Fields({ control }) {
-  const { register, getValues, setValue } = useForm();
+export default function Fields({
+  register, control, getValues, setValue
+}) {
   const lastInput = {};
 
   function multiply(index) {
@@ -29,7 +30,7 @@ export default function Fields({ control }) {
             <label className="item__label" htmlFor="itemList">
               Item Name
               <input
-                {...register(`items.${index}.name`)}
+                {...register(`items[${index}].name`)}
                 placeholder="Product Name"
               />
             </label>
@@ -37,7 +38,7 @@ export default function Fields({ control }) {
             <label className="item__label" htmlFor="itemList">
               Qty.
               <input
-                {...register(`items.${index}.quantity`)}
+                {...register(`items[${index}].quantity`)}
                 placeholder="Qty"
               />
 
@@ -46,7 +47,7 @@ export default function Fields({ control }) {
             <label className="item__label" htmlFor="itemList">
               Price
               <input
-                {...register(`items.${index}.price`)}
+                {...register(`items[${index}].price`)}
                 placeholder="Price"
               />
             </label>
@@ -54,8 +55,7 @@ export default function Fields({ control }) {
             <label className="item__label item__label--total" htmlFor="itemList">
               Total
               <input
-                {...register(`items.${index}.total`)}
-                disabled="true"
+                {...register(`items[${index}].total`)}
               />
             </label>
 
@@ -67,7 +67,7 @@ export default function Fields({ control }) {
               className="fieldset-items__btn"
               type="button"
               onClick={
-              () => setValue(`items.${index}.total`, multiply(index))
+              () => setValue(`items[${index}].total`, multiply(index))
               }
             >
               Get Total
