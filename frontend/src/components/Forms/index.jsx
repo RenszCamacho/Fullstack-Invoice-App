@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import { withRouter } from 'react-router-dom';
@@ -11,6 +12,7 @@ import formatDate from '../../services/formatDay';
 import EditBtn from '../Buttons/EditBtn';
 import 'react-datepicker/dist/react-datepicker.css';
 import './form.scss';
+import { addInvoice } from '../../redux/actions/actionCreators';
 
 const defaultValues = {
   items: [
@@ -23,6 +25,8 @@ const defaultValues = {
 };
 
 function Form({ history }) {
+  const dispatch = useDispatch();
+
   const {
     control,
     register,
@@ -35,7 +39,12 @@ function Form({ history }) {
   });
 
   const onSubmit = (data, event) => {
-    console.log(data);
+    // console.log(data);
+    const newInvoice = {
+      ...data
+    };
+    dispatch(addInvoice(newInvoice));
+
     history.push('/');
     event.target.reset();
   };
