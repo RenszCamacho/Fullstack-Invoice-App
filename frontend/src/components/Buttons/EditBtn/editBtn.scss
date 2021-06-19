@@ -2,7 +2,7 @@
 
 .btn-edit {
 	padding: 1.6rem 2.4rem;
-	color: white;
+    color: $secondary-brand-300;
 	border: none;
 	border-radius: 2.4rem;
 	font-weight: 700;
@@ -12,5 +12,6 @@
 
 	&:hover {
 		background-color: $secondary-brand-200;	
+        color: white;
 	}
 }
