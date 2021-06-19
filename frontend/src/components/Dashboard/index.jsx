@@ -8,6 +8,7 @@ import { getInvoices } from '../../redux/actions/actionCreators';
 import InvoiceItem from './InvoiceItem';
 import './dashboard.scss';
 import NoInvoices from './NoInvoices';
+import grandTotal from '../../services/grandTotal';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ function Dashboard() {
              {
           invoices.map(
             (invoice) => (
-              <Link key={`${invoices._id}A`} to={`/details/${invoice._id}`}>
+              <Link key={invoice._id} to={`/details/${invoice._id}`}>
                 <InvoiceItem
                   idNumber={
                   invoice._id
@@ -44,7 +45,7 @@ function Dashboard() {
                 }
                   dueDate={dayjs(invoice.paymentTerms).format('DD MMM YYYY')}
                   name={invoice.to.name}
-                  total={invoice.items[0].total}
+                  total={grandTotal(invoice.items)}
                   status={invoice.status ? 'Paid' : 'Pendin'}
                   styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
                 />

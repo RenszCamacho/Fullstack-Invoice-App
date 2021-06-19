@@ -10,6 +10,7 @@ import DeleteBtn from '../Buttons/DeleteBtn';
 import RegularBtn from '../Buttons/RegularBtn';
 import EditBtn from '../Buttons/EditBtn';
 import GoBack from '../Buttons/GoBack';
+import grandTotal from '../../services/grandTotal';
 import './details.scss';
 
 function Details({ match }) {
@@ -110,7 +111,7 @@ function Details({ match }) {
               }
           <div className="list__total">
             <p>Grand Total</p>
-            <p>{currencyFormat(invoiceId.items[0].total)}</p>
+            <p>{currencyFormat(grandTotal(invoiceId.items))}</p>
           </div>
         </ul>
 
@@ -119,9 +120,6 @@ function Details({ match }) {
         <EditBtn nameBtn="Edit" />
         <DeleteBtn nameBtn="Delete" />
         {!invoiceId.status && (
-        // <button type="button" onClick={toggleStatus}>
-        //   Button
-        // </button>
         <RegularBtn
           nameBtn="Mark as Paid"
           onClick={toggleStatus}
