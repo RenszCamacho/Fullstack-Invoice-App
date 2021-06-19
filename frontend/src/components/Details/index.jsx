@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import { getOneInvoice } from '../../redux/actions/actionCreators';
+import { getOneInvoice, markAsPaid } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
 import currencyFormat from '../../services/currencyFormat';
@@ -21,6 +21,13 @@ function Details({ match }) {
       dispatch(getOneInvoice());
     }
   }, []);
+
+  function toggleStatus() {
+    const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
+    const newStatus = { ...invoiceId };
+    newStatus.status = !newStatus.status;
+    dispatch(markAsPaid(newStatus));
+  }
 
   const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
   return (
@@ -111,7 +118,15 @@ function Details({ match }) {
       <div className="details-container__btn">
         <EditBtn nameBtn="Edit" />
         <DeleteBtn nameBtn="Delete" />
-        {!invoiceId.status && <RegularBtn nameBtn="Mark as Paid" />}
+        {!invoiceId.status && (
+        // <button type="button" onClick={toggleStatus}>
+        //   Button
+        // </button>
+        <RegularBtn
+          nameBtn="Mark as Paid"
+          onClick={toggleStatus}
+        />
+        )}
       </div>
     </main>
   );
