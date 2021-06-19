@@ -13,11 +13,12 @@ import grandTotal from '../../services/grandTotal';
 function Dashboard() {
   const dispatch = useDispatch();
   const invoices = useSelector((store) => store.invoices);
+  // const invoiceA = useSelector((store) => store.invoice);
 
   useEffect(() => {
-    if (!invoices?.length) {
-      dispatch(getInvoices());
-    }
+    // if (!invoices?.length) {
+    dispatch(getInvoices());
+    // }
   }, []);
 
   return (

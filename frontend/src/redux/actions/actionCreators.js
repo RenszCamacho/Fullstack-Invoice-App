@@ -5,7 +5,6 @@ import actionTypes from './actionTypes';
 const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
 
 export function getInvoices() {
-  debugger;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(invoicesUrl);
@@ -26,8 +25,8 @@ export function getOneInvoice(invoice) {
     try {
       const { data } = await axios.get(`${invoicesUrl}${invoice._id}`);
       dispatch({
-        type: actionTypes.GET_ONE_INVOICES,
-        invoices: data
+        type: actionTypes.GET_ONE_INVOICE,
+        invoice: data
       });
     } catch (error) {
       dispatch({
@@ -88,10 +87,10 @@ export function markAsPaid(invoice) {
 export function deleteInvoice(invoiceId) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.delete(`${invoicesUrl}/${invoiceId}`);
+      await axios.delete(`${invoicesUrl}/${invoiceId}`);
       dispatch({
         type: actionTypes.DELETE_INVOICE,
-        invoice: data
+        invoiceId
       });
     } catch (error) {
       dispatch({
