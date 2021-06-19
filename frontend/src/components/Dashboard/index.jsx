@@ -15,9 +15,7 @@ function Dashboard() {
   const invoices = useSelector((store) => store.invoices);
 
   useEffect(() => {
-    if (!invoices?.length) {
-      dispatch(getInvoices());
-    }
+    dispatch(getInvoices());
   }, []);
 
   return (
@@ -46,7 +44,7 @@ function Dashboard() {
                   dueDate={dayjs(invoice.paymentTerms).format('DD MMM YYYY')}
                   name={invoice.to.name}
                   total={grandTotal(invoice.items)}
-                  status={invoice.status ? 'Paid' : 'Pendin'}
+                  status={invoice.status ? 'Paid' : 'Pending'}
                   styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
                 />
               </Link>

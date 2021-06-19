@@ -9,7 +9,6 @@ import GoBack from '../Buttons/GoBack';
 import Header from '../Header';
 import FieldArray from './FieldArray';
 import RegularBtn from '../Buttons/RegularBtn';
-import EditBtn from '../Buttons/EditBtn';
 import { addInvoice } from '../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
 import './form.scss';
@@ -203,22 +202,6 @@ function Form({ history }) {
             />
           </div>
 
-          {/* <div className="fieldset-date__payment-terms">
-            Payment Terms
-            <select
-              className="payment-terms__select"
-              name="paymentTerms"
-              {...register(
-                'paymentTerms', { required: true }
-              )}
-            >
-              <option value={values.VALUE_ONE}>Net 1 Day</option>
-              <option value={values.VALUE_TWO}>Net 7 Day</option>
-              <option value={values.VALUE_THREE}>Net 14 Day</option>
-              <option value={values.VALUE_FOUR}>Net 30 Day</option>
-            </select>
-          </div> */}
-
           <div className="fieldset-date__project-description">
             <label htmlFor="projectDescription">
               Project Description
@@ -249,12 +232,14 @@ function Form({ history }) {
 
         <fieldset className="form__fieldset-btn">
           <div className="fieldset-btn">
-            <EditBtn
+            <RegularBtn
+              modify="info"
               nameBtn="Cancel"
               onClick={redirect}
             />
 
             <RegularBtn
+              modify="primary"
               nameBtn="Save & Send"
               type="submit"
             />

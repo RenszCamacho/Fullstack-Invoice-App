@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
@@ -22,10 +23,10 @@ export function getInvoices() {
 export function getOneInvoice(invoice) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${invoicesUrl}${invoice._id}`);
+      const { data } = await axios.get(`${invoicesUrl}${invoice}`);
       dispatch({
-        type: actionTypes.GET_ONE_INVOICES,
-        invoices: data
+        type: actionTypes.GET_ONE_INVOICE,
+        invoice: data
       });
     } catch (error) {
       dispatch({
