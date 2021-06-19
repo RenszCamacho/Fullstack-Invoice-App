@@ -22,6 +22,13 @@ function invoicesReducer(invoicesState = [], action) {
           : invoicesState)
       );
 
+    case actionTypes.TOGGLE_STATE:
+      return invoicesState.map(
+        (invoice) => (invoice._id === action.invoice._id
+          ? { ...invoicesState, ...action.invoice }
+          : invoicesState)
+      );
+
     case actionTypes.DELETE_INVOICE:
       return invoicesState.filter(
         (invoice) => invoice._id === action.invoiceId

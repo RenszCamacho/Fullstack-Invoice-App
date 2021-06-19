@@ -5,8 +5,8 @@
     flex-direction: column;
     align-items: center;
 	width: 100%;
-    height: 100vh;
-    animation: fadeIn 1.8s;
+    min-height: 100vh;
+    animation: $animation;
 
     &__dashboard-header,
     &__list {
@@ -147,6 +147,7 @@
 
         span {
             color: $secondary-brand-200;
+            margin-right: .3rem;
         }
     }
 

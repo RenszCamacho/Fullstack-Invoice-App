@@ -3,6 +3,7 @@
 
 .form-container {
     background-color: white;
+    animation: $animation;
 
 	&__wrap-title,
     &__form {
@@ -149,6 +150,7 @@
         border: none;
         padding: 1rem 0;
         margin: 3rem 0;
+        grid-column: 1 / span 4;
     }
 }
 
@@ -164,6 +166,7 @@
     &__label {
         width: 100%;
     }
+
 
     &__total-list {
         display: flex;
@@ -191,6 +194,13 @@
         &:hover {
             color: red;
         }
+    }
+}
+
+.item__label--total {
+    input {
+        background: none;
+        border: none;
     }
 }
 

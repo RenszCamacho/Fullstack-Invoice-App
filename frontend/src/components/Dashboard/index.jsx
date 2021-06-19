@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
 import Header from '../Header';
 import DashboardHeader from './DashboardHeader';
 import { getInvoices } from '../../redux/actions/actionCreators';
 import InvoiceItem from './InvoiceItem';
 import './dashboard.scss';
 import NoInvoices from './NoInvoices';
+import grandTotal from '../../services/grandTotal';
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -34,16 +36,16 @@ function Dashboard() {
              {
           invoices.map(
             (invoice) => (
-              <Link key={`${invoices._id}A`} to={`/details/${invoice._id}`}>
+              <Link key={invoice._id} to={`/details/${invoice._id}`}>
                 <InvoiceItem
                   idNumber={
                   invoice._id
                     .toUpperCase()
                     .slice(-5)
                 }
-                  dueDate={invoice.paymentTerms}
+                  dueDate={dayjs(invoice.paymentTerms).format('DD MMM YYYY')}
                   name={invoice.to.name}
-                  total={invoice.total}
+                  total={grandTotal(invoice.items)}
                   status={invoice.status ? 'Paid' : 'Pendin'}
                   styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
                 />

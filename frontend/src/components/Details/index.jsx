@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOneInvoice } from '../../redux/actions/actionCreators';
+import dayjs from 'dayjs';
+import { getOneInvoice, markAsPaid } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
 import currencyFormat from '../../services/currencyFormat';
@@ -9,6 +10,7 @@ import DeleteBtn from '../Buttons/DeleteBtn';
 import RegularBtn from '../Buttons/RegularBtn';
 import EditBtn from '../Buttons/EditBtn';
 import GoBack from '../Buttons/GoBack';
+import grandTotal from '../../services/grandTotal';
 import './details.scss';
 
 function Details({ match }) {
@@ -19,7 +21,14 @@ function Details({ match }) {
     if (!invoice?.length) {
       dispatch(getOneInvoice());
     }
-  }, [invoice]);
+  }, []);
+
+  function toggleStatus() {
+    const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
+    const newStatus = { ...invoiceId };
+    newStatus.status = !newStatus.status;
+    dispatch(markAsPaid(newStatus));
+  }
 
   const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
   return (
@@ -60,12 +69,12 @@ function Details({ match }) {
 
         <div className="body__invoice-date">
           <h3>Invoice Date</h3>
-          <span>{invoiceId.invoiceDate}</span>
+          <span>{dayjs(invoiceId.invoiceDate).format('DD MMM YYYY')}</span>
         </div>
 
         <div className="body__payment-due">
           <h3>Paymet Due</h3>
-          <span>{invoiceId.paymentTerms}</span>
+          <span>{dayjs(invoiceId.paymentTerms).format('DD MMM YYYY')}</span>
         </div>
 
         <div className="body__sent-to">
@@ -102,7 +111,7 @@ function Details({ match }) {
               }
           <div className="list__total">
             <p>Grand Total</p>
-            <p>{currencyFormat(invoiceId.total)}</p>
+            <p>{currencyFormat(grandTotal(invoiceId.items))}</p>
           </div>
         </ul>
 
@@ -110,7 +119,12 @@ function Details({ match }) {
       <div className="details-container__btn">
         <EditBtn nameBtn="Edit" />
         <DeleteBtn nameBtn="Delete" />
-        {!invoiceId.status && <RegularBtn nameBtn="Mark as Paid" />}
+        {!invoiceId.status && (
+        <RegularBtn
+          nameBtn="Mark as Paid"
+          onClick={toggleStatus}
+        />
+        )}
       </div>
     </main>
   );

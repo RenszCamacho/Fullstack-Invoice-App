@@ -67,6 +67,22 @@ export function updateInvoice(invoice) {
   };
 }
 
+export function markAsPaid(invoice) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.put(`${invoicesUrl}${invoice._id}`, invoice);
+      dispatch({
+        type: actionTypes.TOGGLE_STATE,
+        invoice: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.TOGGLE_STATE_ERROR
+      });
+    }
+  };
+}
+
 export function deleteInvoice(invoiceId) {
   return async (dispatch) => {
     try {

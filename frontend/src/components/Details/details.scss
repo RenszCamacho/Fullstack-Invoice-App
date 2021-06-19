@@ -1,7 +1,7 @@
 @import '../../index.scss';
 
 .details-container {
-    animation: fadeIn 1.8s;
+    animation: $animation;
 
     &__link,
     &__status,
