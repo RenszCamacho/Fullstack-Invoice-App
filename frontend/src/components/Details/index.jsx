@@ -1,21 +1,26 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { getOneInvoice, markAsPaid } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
 import currencyFormat from '../../services/currencyFormat';
-import DeleteBtn from '../Buttons/DeleteBtn';
 import RegularBtn from '../Buttons/RegularBtn';
-import EditBtn from '../Buttons/EditBtn';
 import GoBack from '../Buttons/GoBack';
+import Modal from '../Modal';
 import grandTotal from '../../services/grandTotal';
 import './details.scss';
 
 function Details({ match }) {
   const dispatch = useDispatch();
   const invoice = useSelector((store) => store.invoices);
+
+  const [showModal, setShowModal] = useState(false);
+
+  function openModal() {
+    setShowModal((previous) => !previous);
+  }
 
   useEffect(() => {
     if (!invoice?.length) {
@@ -33,6 +38,16 @@ function Details({ match }) {
   const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
   return (
     <main className="details-container">
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        invoiceId={invoiceId}
+        id={
+          invoiceId._id
+            .toUpperCase()
+            .slice(-5)
+        }
+      />
       <Header />
 
       <GoBack />
@@ -117,10 +132,18 @@ function Details({ match }) {
 
       </div>
       <div className="details-container__btn">
-        <EditBtn nameBtn="Edit" />
-        <DeleteBtn nameBtn="Delete" />
+        <RegularBtn
+          nameBtn="Edit"
+          modify="info"
+        />
+        <RegularBtn
+          nameBtn="Delete"
+          modify="danger"
+          onClick={openModal}
+        />
         {!invoiceId.status && (
         <RegularBtn
+          modify="primary"
           nameBtn="Mark as Paid"
           onClick={toggleStatus}
         />

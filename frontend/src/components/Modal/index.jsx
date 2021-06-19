@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import DeleteBtn from '../Buttons/DeleteBtn';
-import EditBtn from '../Buttons/EditBtn';
+import { useDispatch } from 'react-redux';
+import RegularBtn from '../Buttons/RegularBtn';
 import './modal.scss';
+import { deleteInvoice } from '../../redux/actions/actionCreators';
 
-function Modal({ showModal, setShowModal, id }) {
+function Modal({
+  showModal, setShowModal, id, invoiceId
+}) {
+  const dispatch = useDispatch();
+
   return (
     <>
       {
@@ -24,12 +29,15 @@ function Modal({ showModal, setShowModal, id }) {
           </p>
 
           <div className="box__btn-wrapper">
-            <EditBtn
+            <RegularBtn
+              modify="info"
               nameBtn="Cancel"
               onClick={() => setShowModal((previous) => !previous)}
             />
-            <DeleteBtn
+            <RegularBtn
+              modify="danger"
               nameBtn="Delete"
+              onClick={dispatch(deleteInvoice(invoiceId._id))}
             />
           </div>
         </div>

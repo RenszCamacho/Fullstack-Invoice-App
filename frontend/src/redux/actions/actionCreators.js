@@ -1,9 +1,11 @@
+/* eslint-disable no-debugger */
 import axios from 'axios';
 import actionTypes from './actionTypes';
 
 const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
 
 export function getInvoices() {
+  debugger;
   return async (dispatch) => {
     try {
       const { data } = await axios.get(invoicesUrl);
@@ -86,10 +88,10 @@ export function markAsPaid(invoice) {
 export function deleteInvoice(invoiceId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`${invoicesUrl}${invoiceId}`);
+      const { data } = await axios.delete(`${invoicesUrl}/${invoiceId}`);
       dispatch({
         type: actionTypes.DELETE_INVOICE,
-        invoiceId
+        invoice: data
       });
     } catch (error) {
       dispatch({

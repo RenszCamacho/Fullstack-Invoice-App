@@ -47,11 +47,11 @@ const invoiceController = () => {
 
   const deleteInvoiceById = async (req, res) => {
     try {
-      await Invoice.findByIdAndDelete(
+      const invoice = await Invoice.findByIdAndDelete(
         req.params.invoiceId
       );
       res.status(204);
-      res.send();
+      res.json(invoice);
     } catch (error) {
       res.status(500);
       res.send(error);

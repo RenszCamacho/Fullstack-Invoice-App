@@ -9,7 +9,6 @@ import GoBack from '../Buttons/GoBack';
 import Header from '../Header';
 import FieldArray from './FieldArray';
 import RegularBtn from '../Buttons/RegularBtn';
-import EditBtn from '../Buttons/EditBtn';
 import { addInvoice } from '../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
 import './form.scss';
@@ -233,12 +232,14 @@ function Form({ history }) {
 
         <fieldset className="form__fieldset-btn">
           <div className="fieldset-btn">
-            <EditBtn
+            <RegularBtn
+              modify="info"
               nameBtn="Cancel"
               onClick={redirect}
             />
 
             <RegularBtn
+              modify="primary"
               nameBtn="Save & Send"
               type="submit"
             />
