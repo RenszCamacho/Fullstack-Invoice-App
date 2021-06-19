@@ -23,7 +23,7 @@ export function getInvoices() {
 export function getOneInvoice(invoice) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${invoicesUrl}${invoice._id}`);
+      const { data } = await axios.get(`${invoicesUrl}${invoice}`);
       dispatch({
         type: actionTypes.GET_ONE_INVOICE,
         invoice: data
@@ -87,7 +87,7 @@ export function markAsPaid(invoice) {
 export function deleteInvoice(invoiceId) {
   return async (dispatch) => {
     try {
-      await axios.delete(`${invoicesUrl}/${invoiceId}`);
+      await axios.delete(`${invoicesUrl}${invoiceId}`);
       dispatch({
         type: actionTypes.DELETE_INVOICE,
         invoiceId
