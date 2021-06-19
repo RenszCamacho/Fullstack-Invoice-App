@@ -1,14 +1,21 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory, withRouter } from 'react-router-dom';
 import RegularBtn from '../Buttons/RegularBtn';
 import './modal.scss';
 import { deleteInvoice } from '../../redux/actions/actionCreators';
 
 function Modal({
-  showModal, setShowModal, id, invoiceId
+  showModal, setShowModal, id, invoice
 }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  function deleteModal() {
+    dispatch(deleteInvoice(invoice));
+    history.push('/');
+  }
 
   return (
     <>
@@ -37,7 +44,7 @@ function Modal({
             <RegularBtn
               modify="danger"
               nameBtn="Delete"
-              onClick={dispatch(deleteInvoice(invoiceId._id))}
+              onClick={deleteModal}
             />
           </div>
         </div>
@@ -48,4 +55,4 @@ function Modal({
   );
 }
 
-export default Modal;
+export default withRouter(Modal);

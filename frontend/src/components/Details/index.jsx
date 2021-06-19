@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
+import { useParams } from 'react-router-dom';
 import { getOneInvoice, markAsPaid } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
@@ -12,107 +13,108 @@ import Modal from '../Modal';
 import grandTotal from '../../services/grandTotal';
 import './details.scss';
 
-function Details({ match }) {
+function Details() {
   const dispatch = useDispatch();
-  const invoice = useSelector((store) => store.invoices);
+  const invoice = useSelector((store) => store.invoice);
 
   const [showModal, setShowModal] = useState(false);
+  const { invoiceId } = useParams();
 
   function openModal() {
     setShowModal((previous) => !previous);
   }
 
   useEffect(() => {
-    if (!invoice?.length) {
-      dispatch(getOneInvoice());
-    }
+    dispatch(getOneInvoice(invoiceId));
   }, []);
 
   function toggleStatus() {
-    const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
-    const newStatus = { ...invoiceId };
+    const newStatus = { ...invoice };
     newStatus.status = !newStatus.status;
     dispatch(markAsPaid(newStatus));
   }
 
-  const invoiceId = invoice.filter((one) => one._id === match.params.invoiceId)[0];
   return (
-    <main className="details-container">
-      <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        invoiceId={invoiceId}
-        id={
-          invoiceId._id
-            .toUpperCase()
-            .slice(-5)
-        }
-      />
-      <Header />
+    <>
+      { invoice?._id && (
 
-      <GoBack />
+      <main className="details-container">
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          invoice={invoice?._id}
+          id={
+              invoice?._id
+                .toUpperCase()
+                .slice(-5)
+            }
+        />
 
-      <div className="details-container__status">
-        <p className="status__paragraph">Status</p>
-        <div className={invoiceId.status ? 'status__paid-status' : 'status__pending-status'}>
-          <em className="fas fa-circle" />
-          {invoiceId.status ? 'Paid' : 'Pending'}
-        </div>
-      </div>
+        <Header />
 
-      <div className="details-container__body">
-        <div className="body__project-description">
-          #
-          <span>
-            {invoiceId._id
-              .slice(-5)
-              .toUpperCase()}
-          </span>
-          <h2>{invoiceId.projectDescription}</h2>
+        <GoBack />
+
+        <div className="details-container__status">
+          <p className="status__paragraph">Status</p>
+          <div className={invoice?.status ? 'status__paid-status' : 'status__pending-status'}>
+            <em className="fas fa-circle" />
+            {invoice?.status ? 'Paid' : 'Pending'}
+          </div>
         </div>
 
-        <address className="body__address-to">
-          {invoiceId.from.address.street}
-          <br />
-          {invoiceId.from.address.city}
-          <br />
-          {invoiceId.from.address.postCode}
-          <br />
-          {invoiceId.from.address.country}
-          <br />
-        </address>
+        <div className="details-container__body">
+          <div className="body__project-description">
+            #
+            <span>
+              {invoice?._id
+                .slice(-5)
+                .toUpperCase()}
+            </span>
+            <h2>{invoice?.projectDescription}</h2>
+          </div>
 
-        <div className="body__invoice-date">
-          <h3>Invoice Date</h3>
-          <span>{dayjs(invoiceId.invoiceDate).format('DD MMM YYYY')}</span>
-        </div>
+          <address className="body__address-to">
+            {invoice?.from?.address?.street}
+            <br />
+            {invoice?.from?.address?.city}
+            <br />
+            {invoice?.from?.address?.postCode}
+            <br />
+            {invoice?.from?.address?.country}
+            <br />
+          </address>
 
-        <div className="body__payment-due">
-          <h3>Paymet Due</h3>
-          <span>{dayjs(invoiceId.paymentTerms).format('DD MMM YYYY')}</span>
-        </div>
+          <div className="body__invoice-date">
+            <h3>Invoice Date</h3>
+            <span>{dayjs(invoice?.invoiceDate).format('DD MMM YYYY')}</span>
+          </div>
 
-        <div className="body__sent-to">
-          <h3>Sent to</h3>
-          <span>{invoiceId.to.email}</span>
-        </div>
+          <div className="body__payment-due">
+            <h3>Paymet Due</h3>
+            <span>{dayjs(invoice?.paymentTerms).format('DD MMM YYYY')}</span>
+          </div>
 
-        <address className="body__address-from">
-          <p>Bill to</p>
-          <h3>{invoiceId.to.name}</h3>
-          {invoiceId.to.address.street}
-          <br />
-          {invoiceId.to.address.city}
-          <br />
-          {invoiceId.to.address.postCode}
-          <br />
-          {invoiceId.to.address.country}
-          <br />
-        </address>
+          <div className="body__sent-to">
+            <h3>Sent to</h3>
+            <span>{invoice?.to?.email}</span>
+          </div>
 
-        <ul className="body__list">
-          {
-                invoiceId.items.map(
+          <address className="body__address-from">
+            <p>Bill to</p>
+            <h3>{invoice?.to?.name}</h3>
+            {invoice?.to?.address?.street}
+            <br />
+            {invoice?.to?.address?.city}
+            <br />
+            {invoice?.to?.address?.postCode}
+            <br />
+            {invoice?.to?.address?.country}
+            <br />
+          </address>
+
+          <ul className="body__list">
+            {
+                invoice.items.map(
                   (item) => (
                     <li className="list__item-details" key={`${item._id}A`}>
                       <div className="item-details__container">
@@ -124,32 +126,37 @@ function Details({ match }) {
                   )
                 )
               }
-          <div className="list__total">
-            <p>Grand Total</p>
-            <p>{currencyFormat(grandTotal(invoiceId.items))}</p>
-          </div>
-        </ul>
+            <div className="list__total">
+              <p>Grand Total</p>
+              <p>{currencyFormat(grandTotal(invoice?.items))}</p>
+            </div>
+          </ul>
 
-      </div>
-      <div className="details-container__btn">
-        <RegularBtn
-          nameBtn="Edit"
-          modify="info"
-        />
-        <RegularBtn
-          nameBtn="Delete"
-          modify="danger"
-          onClick={openModal}
-        />
-        {!invoiceId.status && (
-        <RegularBtn
-          modify="primary"
-          nameBtn="Mark as Paid"
-          onClick={toggleStatus}
-        />
-        )}
-      </div>
-    </main>
+        </div>
+        <div className="details-container__btn">
+
+          <RegularBtn
+            nameBtn="Edit"
+            modify="info"
+          />
+
+          <RegularBtn
+            nameBtn="Delete"
+            modify="danger"
+            onClick={openModal}
+          />
+
+          {!invoice?.status && (
+          <RegularBtn
+            modify="primary"
+            nameBtn="Mark as Paid"
+            onClick={toggleStatus}
+          />
+          )}
+        </div>
+      </main>
+      )}
+    </>
   );
 }
 

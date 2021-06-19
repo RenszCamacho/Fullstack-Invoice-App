@@ -13,12 +13,9 @@ import grandTotal from '../../services/grandTotal';
 function Dashboard() {
   const dispatch = useDispatch();
   const invoices = useSelector((store) => store.invoices);
-  // const invoiceA = useSelector((store) => store.invoice);
 
   useEffect(() => {
-    // if (!invoices?.length) {
     dispatch(getInvoices());
-    // }
   }, []);
 
   return (
@@ -47,7 +44,7 @@ function Dashboard() {
                   dueDate={dayjs(invoice.paymentTerms).format('DD MMM YYYY')}
                   name={invoice.to.name}
                   total={grandTotal(invoice.items)}
-                  status={invoice.status ? 'Paid' : 'Pendin'}
+                  status={invoice.status ? 'Paid' : 'Pending'}
                   styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
                 />
               </Link>

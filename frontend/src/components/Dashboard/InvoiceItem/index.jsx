@@ -1,9 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import currencyFormat from '../../../services/currencyFormat';
 
 function InvoiceItem({
-  // eslint-disable-next-line react/prop-types
   idNumber,
   dueDate,
   name,
@@ -31,13 +30,13 @@ function InvoiceItem({
   );
 }
 
-// InvoiceItem.propTypes = {
-//   idNumber: PropTypes.string.isRequired,
-//   dueDate: PropTypes.string.isRequired,
-//   styles: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   total: PropTypes.number.isRequired,
-//   status: PropTypes.number.isRequired
-// };
+InvoiceItem.propTypes = {
+  idNumber: PropTypes.string.isRequired,
+  dueDate: PropTypes.string.isRequired,
+  styles: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  total: PropTypes.number.isRequired,
+  status: PropTypes.number.isRequired
+};
 
 export default InvoiceItem;

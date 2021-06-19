@@ -13,7 +13,7 @@ function RegularBtn({
       aria-label={type}
       onClick={onClick}
     >
-      <span className="btn__name">{nameBtn}</span>
+      <span>{nameBtn}</span>
     </button>
   );
 }
