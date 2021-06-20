@@ -57,7 +57,7 @@ function NewForm({ history }) {
       <GoBack />
 
       <div className="form-container__wrap-title">
-        <h2>Invoice</h2>
+        <h2>New Invoice</h2>
       </div>
 
       <form className="form-container__form" onSubmit={handleSubmit(onSubmit)}>

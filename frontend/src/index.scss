@@ -64,6 +64,14 @@ body {
   }
   color: $secondary-brand-400;
   background-color: $terciary-brand-300;
+
+  @include rwd(medium){
+    font-size: 1.4rem;
+  }
+
+  @include rwd(xlarge){
+    font-size: 1.6rem;
+  }
 }
 
 a {

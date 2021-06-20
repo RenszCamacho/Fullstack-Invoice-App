@@ -16,6 +16,15 @@
         border-radius: $border-radius;
         box-shadow: $box-shadow;
         animation: jackInTheBox .4s;
+
+        @include rwd(medium){
+            width: 50%;
+            padding: 6rem 5rem;
+        }
+
+        @include rwd(xlarge) {
+            max-width: 50rem;
+        }
     }
 }
 
@@ -27,11 +36,22 @@
 
     &__subtitle {
         color: $secondary-brand-400;
+
+        @include rwd(medium){ 
+            font-size: 2.4rem;
+            margin-bottom: 2rem;
+        }
     }
 
     &__description {
         color: $secondary-brand-200;
         line-height: 1.8rem;
+
+        @include rwd(medium){ 
+            font-size: 1.8rem;
+            line-height: 2.8rem;
+            margin-bottom: 2rem;
+        }
     }
 
     &__btn-wrapper {

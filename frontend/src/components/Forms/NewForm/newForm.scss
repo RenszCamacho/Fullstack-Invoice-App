@@ -64,8 +64,12 @@
 .fieldset-btn {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     width: 100%;
+
+    button:last-child {
+        margin-left: 2rem;
+    }
 }
 
 .fieldset-from {
