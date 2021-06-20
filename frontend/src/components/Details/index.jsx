@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import { useParams, /* useHistory */ withRouter } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import { getOneInvoice, markAsPaid /* updateInvoice */ } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import EditForm from '../Forms/EditForm';
@@ -20,10 +20,10 @@ function Details() {
   const [showModal, setShowModal] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
   const { invoiceId } = useParams();
-  // const history = useHistory();
 
   useEffect(() => {
     dispatch(getOneInvoice(invoiceId));
+    window.scrollTo(0, 0);
   }, []);
 
   function toggleStatus() {
@@ -40,10 +40,6 @@ function Details() {
     setShowEditForm((previous) => !previous);
   }
 
-  // function redirect() {
-  //   history.push('/editform');
-  // }
-
   // function editInvoice() {
   //   dispatch(updateInvoice(invoice));
   // }
@@ -52,7 +48,7 @@ function Details() {
     <>
       {
         showEditForm
-          ? <EditForm />
+          ? <EditForm dataInvoice={invoice} />
           : (
             invoice?._id && (
 
