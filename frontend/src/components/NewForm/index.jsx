@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
@@ -23,7 +22,7 @@ const defaultValues = {
   ]
 };
 
-function Form({ history }) {
+function NewForm({ history }) {
   const dispatch = useDispatch();
 
   const {
@@ -43,7 +42,6 @@ function Form({ history }) {
     };
     dispatch(addInvoice(newInvoice));
 
-    history.push('/');
     event.target.reset();
   };
 
@@ -242,6 +240,7 @@ function Form({ history }) {
               modify="primary"
               nameBtn="Save & Send"
               type="submit"
+              onClick={redirect}
             />
           </div>
         </fieldset>
@@ -250,4 +249,4 @@ function Form({ history }) {
   );
 }
 
-export default withRouter(Form);
+export default withRouter(NewForm);
