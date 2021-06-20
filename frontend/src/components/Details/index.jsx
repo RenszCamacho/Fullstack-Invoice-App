@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
-import { useParams } from 'react-router-dom';
-import { getOneInvoice, markAsPaid, updateInvoice } from '../../redux/actions/actionCreators';
+import { useParams, useHistory, withRouter } from 'react-router-dom';
+import { getOneInvoice, markAsPaid /* updateInvoice */ } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
 import currencyFormat from '../../services/currencyFormat';
@@ -19,6 +18,7 @@ function Details() {
 
   const [showModal, setShowModal] = useState(false);
   const { invoiceId } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(getOneInvoice(invoiceId));
@@ -34,9 +34,12 @@ function Details() {
     setShowModal((previous) => !previous);
   }
 
-  function editInvoice() {
-    dispatch(updateInvoice(invoice));
+  function redirect() {
+    history.push('/editform');
   }
+  // function editInvoice() {
+  //   dispatch(updateInvoice(invoice));
+  // }
 
   return (
     <>
@@ -142,7 +145,8 @@ function Details() {
           <RegularBtn
             nameBtn="Edit"
             modify="info"
-            onClick={editInvoice}
+            onClick={redirect}
+            // onClick={editInvoice}
           />
 
           <RegularBtn
@@ -165,4 +169,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default withRouter(Details);

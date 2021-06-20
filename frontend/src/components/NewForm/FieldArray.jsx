@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-debugger */
 import React from 'react';
 import { useFieldArray } from 'react-hook-form';
 

@@ -8,7 +8,8 @@ import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import configureStore from './redux/store';
 import Details from './components/Details';
-import Forms from './components/Forms';
+import NewForm from './components/NewForm';
+import EditForm from './components/EditForm';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Switch>
           <Route path="/details/:invoiceId" component={Details} />
           <Route path="/" exact component={Dashboard} />
-          <Route path="/form" component={Forms} />
+          <Route path="/newform" component={NewForm} />
+          <Route path="/editform" component={EditForm} />
         </Switch>
       </Router>
     </Provider>
