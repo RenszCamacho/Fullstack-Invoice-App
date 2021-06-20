@@ -4,13 +4,12 @@ import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
-import GoBack from '../Buttons/GoBack';
-import Header from '../Header';
-import FieldArray from './FieldArray';
-import RegularBtn from '../Buttons/RegularBtn';
-import { addInvoice } from '../../redux/actions/actionCreators';
+import GoBack from '../../Buttons/GoBack';
+import Header from '../../Header';
+import FieldArray from '../FieldArray/FieldArray';
+import RegularBtn from '../../Buttons/RegularBtn';
+import { addInvoice } from '../../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
-import './form.scss';
 
 const defaultValues = {
   items: [
@@ -55,7 +54,7 @@ function NewForm({ history }) {
       <GoBack />
 
       <div className="form-container__wrap-title">
-        <h2>Invoice</h2>
+        <h2>Edit Invoice</h2>
       </div>
 
       <form className="form-container__form" onSubmit={handleSubmit(onSubmit)}>

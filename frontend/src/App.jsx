@@ -8,8 +8,8 @@ import { Provider } from 'react-redux';
 import Dashboard from './components/Dashboard';
 import configureStore from './redux/store';
 import Details from './components/Details';
-import NewForm from './components/NewForm';
-import EditForm from './components/EditForm';
+import NewForm from './components/Forms/NewForm';
+import EditForm from './components/Forms/EditForm';
 
 function App() {
   return (

@@ -1,5 +1,6 @@
-@import '../../../node_modules/react-datepicker/src/stylesheets/datepicker.scss';
-@import '../../index.scss';
+@import '../../../../node_modules/react-datepicker/src/stylesheets/datepicker-cssmodules.scss';
+@import '../../../index.scss';
+
 
 .react-datepicker-wrapper {
     width: 100%;
