@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
@@ -6,23 +6,25 @@ import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
 import GoBack from '../../Buttons/GoBack';
 import Header from '../../Header';
-import FieldArray from '../FieldArray/FieldArray';
+import EditFieldArray from '../EditFieldArray';
 import RegularBtn from '../../Buttons/RegularBtn';
-import { addInvoice } from '../../../redux/actions/actionCreators';
+import { updateInvoice } from '../../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const defaultValues = {
-  items: [
-    {
-      name: 'Product Name',
-      quantity: '0',
-      price: '0'
-    }
-  ]
-};
-
-function NewForm({ history }) {
+function EditForm({ history, dataInvoice }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const dispatch = useDispatch();
+  const defaultValues = {
+    item: [
+      {
+        name: dataInvoice?.items?.name,
+        quantity: dataInvoice?.items?.quantity,
+        price: dataInvoice?.items?.price
+      }
+    ]
+  };
 
   const {
     control,
@@ -36,10 +38,13 @@ function NewForm({ history }) {
   });
 
   const onSubmit = (data, event) => {
-    const newInvoice = {
-      ...data
+    const newData = {
+      ...dataInvoice, ...data
     };
-    dispatch(addInvoice(newInvoice));
+
+    dispatch(updateInvoice(newData));
+
+    history.push('/');
 
     event.target.reset();
   };
@@ -54,7 +59,14 @@ function NewForm({ history }) {
       <GoBack />
 
       <div className="form-container__wrap-title">
-        <h2>Edit Invoice</h2>
+        <h2>
+          {`Edit #${
+            dataInvoice._id
+              .toUpperCase()
+              .slice(-5)
+          }`}
+
+        </h2>
       </div>
 
       <form className="form-container__form" onSubmit={handleSubmit(onSubmit)}>
@@ -68,7 +80,10 @@ function NewForm({ history }) {
             <label className="from-street__label" htmlFor="street">
               Street Address
               <br />
-              <input {...register('from.address.street', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.from?.address?.street}
+                {...register('from.address.street')}
+              />
             </label>
           </div>
 
@@ -76,7 +91,10 @@ function NewForm({ history }) {
             <label className="from-city__label" htmlFor="city">
               City
               <br />
-              <input {...register('from.address.city', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.from?.address?.city}
+                {...register('from.address.city')}
+              />
             </label>
           </div>
 
@@ -84,7 +102,10 @@ function NewForm({ history }) {
             <label className="from-code__label" htmlFor="postCode">
               Post Code
               <br />
-              <input {...register('from.address.postCode', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.from?.address?.postCode}
+                {...register('from.address.postCode')}
+              />
             </label>
           </div>
 
@@ -92,7 +113,10 @@ function NewForm({ history }) {
             <label className="from-country__label" htmlFor="country">
               Country
               <br />
-              <input {...register('from.address.country', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.from?.address?.country}
+                {...register('from.address.country')}
+              />
             </label>
           </div>
 
@@ -108,9 +132,9 @@ function NewForm({ history }) {
             <label htmlFor="name">
               Client&apos;s Name
               <br />
-              <input {...register('to.name', {
-                required: true, pattern: /[A-Za-z][A-Za-z0-9-_]{4,24}/i
-              })}
+              <input
+                // defaultValue={dataInvoice?.to?.name}
+                {...register('to.name')}
               />
             </label>
           </div>
@@ -119,9 +143,9 @@ function NewForm({ history }) {
             <label htmlFor="email">
               Client&apos;s Email
               <br />
-              <input {...register('to.email', {
-                required: true, pattern: /(\w\.?)+@[\w.-]+\.\w{2,4}/i
-              })}
+              <input
+                // defaultValue={dataInvoice?.to?.email}
+                {...register('to.email')}
               />
             </label>
           </div>
@@ -130,28 +154,40 @@ function NewForm({ history }) {
             <label htmlFor="street">
               Street Address
               <br />
-              <input {...register('to.address.street', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.to?.address.street}
+                {...register('to.address.street')}
+              />
             </label>
           </div>
 
           <div className="fieldset-to__city">
             <label htmlFor="city">
               City
-              <input {...register('to.address.city', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.to?.address.city}
+                {...register('to.address.city')}
+              />
             </label>
           </div>
 
           <div className="fieldset-to__code">
             <label htmlFor="postCode">
               Post Code
-              <input {...register('to.address.postCode', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.to?.address.postCode}
+                {...register('to.address.postCode')}
+              />
             </label>
           </div>
 
           <div className="fieldset-to__country">
             <label htmlFor="country">
               Country
-              <input {...register('to.address.country', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.to?.address.country}
+                {...register('to.address.country')}
+              />
             </label>
           </div>
 
@@ -165,9 +201,9 @@ function NewForm({ history }) {
             <Controller
               name="invoiceDate"
               control={control}
-              rules={{ required: true }}
               render={({ field }) => (
                 <DatePicker
+                  // value={dayjs(dataInvoice?.invoiceDate).format('DD MMM YYYY')}
                   className="input-container__input"
                   onChange={(event) => field.onChange(event)}
                   selected={field.value}
@@ -185,9 +221,9 @@ function NewForm({ history }) {
             <Controller
               name="paymentTerms"
               control={control}
-              rules={{ required: true }}
               render={({ field }) => (
                 <DatePicker
+                  // value={dayjs(dataInvoice?.paymentTerms).format('DD MMM YYYY')}
                   className="input-container__input"
                   onChange={(event) => field.onChange(event)}
                   selected={field.value}
@@ -202,7 +238,10 @@ function NewForm({ history }) {
           <div className="fieldset-date__project-description">
             <label htmlFor="projectDescription">
               Project Description
-              <input {...register('projectDescription', { required: true })} />
+              <input
+                // defaultValue={dataInvoice?.projectDescription}
+                {...register('projectDescription')}
+              />
             </label>
           </div>
 
@@ -214,7 +253,7 @@ function NewForm({ history }) {
             <legend>Item List</legend>
           </div>
 
-          <FieldArray
+          <EditFieldArray
             {...{
               control, register, defaultValues, getValues, setValue, errors
             }}
@@ -231,15 +270,15 @@ function NewForm({ history }) {
           <div className="fieldset-btn">
             <RegularBtn
               modify="info"
+              type="button"
               nameBtn="Cancel"
               onClick={redirect}
             />
 
             <RegularBtn
               modify="primary"
-              nameBtn="Save & Send"
+              nameBtn="Save Changes"
               type="submit"
-              onClick={redirect}
             />
           </div>
         </fieldset>
@@ -248,4 +287,4 @@ function NewForm({ history }) {
   );
 }
 
-export default withRouter(NewForm);
+export default withRouter(EditForm);
