@@ -3,7 +3,7 @@
 
 .form-container {
     background-color: white;
-    animation: $animation;
+    animation: bounceInLeft 1s;
 
 	&__wrap-title,
     &__form {

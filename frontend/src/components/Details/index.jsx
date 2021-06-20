@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
-import { getOneInvoice, markAsPaid } from '../../redux/actions/actionCreators';
+import { getOneInvoice, markAsPaid, updateInvoice } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import multiply from '../../services/multiply';
 import currencyFormat from '../../services/currencyFormat';
@@ -20,10 +20,6 @@ function Details() {
   const [showModal, setShowModal] = useState(false);
   const { invoiceId } = useParams();
 
-  function openModal() {
-    setShowModal((previous) => !previous);
-  }
-
   useEffect(() => {
     dispatch(getOneInvoice(invoiceId));
   }, []);
@@ -32,6 +28,14 @@ function Details() {
     const newStatus = { ...invoice };
     newStatus.status = !newStatus.status;
     dispatch(markAsPaid(newStatus));
+  }
+
+  function openModal() {
+    setShowModal((previous) => !previous);
+  }
+
+  function editInvoice() {
+    dispatch(updateInvoice(invoice));
   }
 
   return (
@@ -138,6 +142,7 @@ function Details() {
           <RegularBtn
             nameBtn="Edit"
             modify="info"
+            onClick={editInvoice}
           />
 
           <RegularBtn
