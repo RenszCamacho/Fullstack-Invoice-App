@@ -28,6 +28,7 @@ export default function Fields({
             <label className="item__label" htmlFor="itemList">
               Item Name
               <input
+                defaultValue={item.name}
                 {...register(`items[${index}].name`)}
                 placeholder="Product Name"
               />
@@ -79,7 +80,7 @@ export default function Fields({
         className="fieldset-items__btn"
         type="button"
         onClick={() => {
-          append({ name: 'items' });
+          append({ name: '' });
         }}
       >
         + Add New Item

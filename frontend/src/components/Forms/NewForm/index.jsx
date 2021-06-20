@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
 import GoBack from '../../Buttons/GoBack';
 import Header from '../../Header';
-import FieldArray from '../FieldArray/FieldArray';
+import FieldArray from '../FieldArray';
 import RegularBtn from '../../Buttons/RegularBtn';
 import { addInvoice } from '../../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -41,6 +41,8 @@ function NewForm({ history }) {
       ...data
     };
     dispatch(addInvoice(newInvoice));
+
+    history.push('/');
 
     event.target.reset();
   };
@@ -240,7 +242,7 @@ function NewForm({ history }) {
               modify="primary"
               nameBtn="Save & Send"
               type="submit"
-              onClick={redirect}
+              // onClick={redirect}
             />
           </div>
         </fieldset>
