@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import Dashboard from './index';
 import { getInvoices } from '../../redux/actions/actionCreators';
@@ -29,15 +28,19 @@ describe('Dashboard component', () => {
         getInvoices.mockReturnValueOnce({ type: '' });
 
         render(<Dashboard />, {
+
           initialState: {
             invoices: [{
-              _id: '64264262', paymentTerms: 'terms', status: false, to: { name: 'sara' }, items: [{ total: 4 }]
+              _id: '64264262',
+              paymentTerms: 'terms',
+              status: false,
+              to: { name: 'sara' },
+              items: [{ total: 4 }]
             }]
           }
+
         });
       });
-
-      // expect(screen.getByText(//i))
     });
   });
 });

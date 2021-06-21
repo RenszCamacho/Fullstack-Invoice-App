@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import currencyFormat from '../../../services/currencyFormat';
 
 function InvoiceItem({
@@ -29,14 +28,5 @@ function InvoiceItem({
     </li>
   );
 }
-
-InvoiceItem.propTypes = {
-  idNumber: PropTypes.string.isRequired,
-  dueDate: PropTypes.string.isRequired,
-  styles: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  total: PropTypes.number.isRequired,
-  status: PropTypes.number.isRequired
-};
 
 export default InvoiceItem;
