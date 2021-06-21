@@ -8,7 +8,7 @@ jest.mock('../../redux/actions/actionCreators');
 describe('Dashboard component', () => {
   describe('Given a getInvoice function', () => {
     describe('When is render with empty initial state', () => {
-      test.only('Then should call getInvoice', () => {
+      test('Then should call getInvoice', () => {
         getInvoices.mockReturnValueOnce({ type: '' });
 
         render(<Dashboard />, {
@@ -24,7 +24,7 @@ describe('Dashboard component', () => {
         });
       });
 
-      test.only('Then should call getInvoice', () => {
+      test('Then should call getInvoice', () => {
         getInvoices.mockReturnValueOnce({ type: '' });
 
         render(<Dashboard />, {

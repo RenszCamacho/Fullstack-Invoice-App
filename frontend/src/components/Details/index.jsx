@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
 import { useParams, withRouter } from 'react-router-dom';
-import { getOneInvoice, markAsPaid /* updateInvoice */ } from '../../redux/actions/actionCreators';
+import { getOneInvoice, markAsPaid } from '../../redux/actions/actionCreators';
 import Header from '../Header';
 import EditForm from '../Forms/EditForm';
 import multiply from '../../services/multiply';
@@ -39,10 +39,6 @@ function Details() {
   function openEditForm() {
     setShowEditForm((previous) => !previous);
   }
-
-  // function editInvoice() {
-  //   dispatch(updateInvoice(invoice));
-  // }
 
   return (
     <>
@@ -157,6 +153,7 @@ function Details() {
 
                 <RegularBtn
                   nameBtn="Delete"
+                  // data-testId="delete-button"
                   modify="danger"
                   onClick={openModal}
                 />
@@ -164,6 +161,7 @@ function Details() {
                 {!invoice?.status && (
                 <RegularBtn
                   modify="primary"
+                  data="toggle-button"
                   nameBtn="Mark as Paid"
                   onClick={toggleStatus}
                 />
