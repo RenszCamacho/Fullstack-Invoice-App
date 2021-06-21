@@ -1,4 +1,5 @@
 const Invoice = require('../../models/invoiceModel');
+const handleError = require('../../utils/handle.errors');
 
 const invoiceController = () => {
   const getAll = async (req, res) => {
@@ -6,8 +7,7 @@ const invoiceController = () => {
       const invoices = await Invoice.find(req.query);
       res.json(invoices);
     } catch (error) {
-      res.status(500);
-      res.send(error);
+      handleError.call(res, error);
     }
   };
 
@@ -16,8 +16,7 @@ const invoiceController = () => {
       const invoice = await Invoice.findById(req.params.invoiceId);
       res.json(invoice);
     } catch (error) {
-      res.status(500);
-      res.send(error);
+      handleError.call(res, error);
     }
   };
 
@@ -26,8 +25,7 @@ const invoiceController = () => {
       const invoice = await Invoice.create(req.body);
       res.json(invoice);
     } catch (error) {
-      res.status(500);
-      res.send(error);
+      handleError.call(res, error);
     }
   };
 
@@ -40,8 +38,7 @@ const invoiceController = () => {
       );
       res.json(invoice);
     } catch (error) {
-      res.status(500);
-      res.send(error);
+      handleError.call(res, error);
     }
   };
 
@@ -53,8 +50,7 @@ const invoiceController = () => {
       res.status(204);
       res.json(invoice);
     } catch (error) {
-      res.status(500);
-      res.send(error);
+      handleError.call(res, error);
     }
   };
 

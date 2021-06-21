@@ -22,6 +22,7 @@ module.exports = {
     'comma-dangle': [2, 'never'],
     'no-underscore-dangle': 0,
     'react/jsx-props-no-spreading': 0,
-    'react/prop-types': 0
+    'react/prop-types': 0,
+    'react/jsx-filename-extension': 0
   }
 };

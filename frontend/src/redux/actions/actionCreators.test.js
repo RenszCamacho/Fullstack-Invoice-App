@@ -4,7 +4,9 @@ import {
   addInvoice,
   getInvoices,
   updateInvoice,
-  deleteInvoice
+  deleteInvoice,
+  getOneInvoice,
+  markAsPaid
 } from './actionCreators';
 
 jest.mock('axios');
@@ -39,6 +41,39 @@ describe('Given a function getInvoices action creator', () => {
         expect(dispatch).toHaveBeenCalledWith({
           type: actionTypes.GET_ALL_INVOICES_ERROR
         });
+      });
+    });
+  });
+});
+
+describe('Given a function getOneInvoice action creator', () => {
+  describe('When is invoked', () => {
+    describe('And it is called by the dispatcher an has no errors', () => {
+      test('Then should call one invoices by Id', async () => {
+        axios.get.mockResolvedValueOnce({
+          data: {}
+        });
+
+        const dispatch = jest.fn();
+        await getOneInvoice()(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.GET_ONE_INVOICE,
+          invoice: {}
+        });
+      });
+    });
+
+    describe('And it is called by the dispatcher an has errors', () => {
+      test('Then should dispatch an error', async () => {
+        axios.get.mockRejectedValue();
+
+        const dispatch = jest.fn();
+        await getOneInvoice()(dispatch);
+
+        expect(dispatch).toHaveBeenCalledWith({});
       });
     });
   });
@@ -115,6 +150,45 @@ describe('Given a function updateInvoice action creator', () => {
 
         expect(dispatch).toHaveBeenCalledWith({
           type: actionTypes.UPDATE_INVOICE_ERROR
+        });
+      });
+    });
+  });
+});
+
+describe('Given a function markAsPaid action creator', () => {
+  describe('When is invoked', () => {
+    describe('And it is called by the dispatcher an has no errors', () => {
+      test('Then should update the invoice', async () => {
+        const invoice = {
+          data: {
+            status: true
+          }
+        };
+
+        axios.put.mockResolvedValueOnce(invoice);
+
+        const dispatch = jest.fn();
+        await markAsPaid(invoice)(dispatch);
+
+        expect(dispatch).toHaveBeenCalled();
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.TOGGLE_STATE,
+          invoice: invoice.data
+        });
+      });
+    });
+
+    describe('And it is called by the dispatcher an has errors', () => {
+      test('Then should dispatch an error', async () => {
+        axios.post.mockRejectedValue();
+
+        const dispatch = jest.fn();
+        await markAsPaid()(dispatch);
+
+        expect(dispatch).toHaveBeenCalledWith({
+          type: actionTypes.TOGGLE_STATE_ERROR
         });
       });
     });

@@ -34,18 +34,22 @@ function Dashboard() {
              {
           invoices.map(
             (invoice) => (
-              <Link key={invoice._id} to={`/details/${invoice._id}`}>
+              <Link
+                key={invoice?._id}
+                to={`/details/${invoice?._id}`}
+                data-go-form="go-form"
+              >
                 <InvoiceItem
                   idNumber={
-                  invoice._id
+                  invoice?._id
                     .toUpperCase()
                     .slice(-5)
                 }
-                  dueDate={dayjs(invoice.paymentTerms).format('DD MMM YYYY')}
-                  name={invoice.to.name}
-                  total={grandTotal(invoice.items)}
-                  status={invoice.status ? 'Paid' : 'Pending'}
-                  styles={invoice.status ? 'item__paid-status' : 'item__pending-status'}
+                  dueDate={dayjs(invoice?.paymentTerms).format('DD MMM YYYY')}
+                  name={invoice?.to.name}
+                  total={grandTotal(invoice?.items)}
+                  status={invoice?.status ? 'Paid' : 'Pending'}
+                  styles={invoice?.status ? 'item__paid-status' : 'item__pending-status'}
                 />
               </Link>
             )
