@@ -1,5 +1,5 @@
 const {
-  getAll, createInvoice, updateInvoiceById, deleteInvoiceById
+  getAll, createInvoice, updateInvoiceById, deleteInvoiceById, getOne
 } = require('./invoiceController');
 const Invoice = require('../../models/invoiceModel');
 
@@ -56,6 +56,61 @@ describe('invoiceController', () => {
 
         test('Then call res.send with find error', () => {
           expect(res.send).toHaveBeenCalledWith('find error');
+        });
+      });
+    });
+  });
+
+  describe('Given a function getOne', () => {
+    describe('When is invoked', () => {
+      let req;
+      let res;
+
+      describe('And there is no error', () => {
+        beforeEach(async () => {
+          req = {
+            params: { invoiceId: 'mock' }
+          };
+
+          res = {
+            json: jest.fn()
+          };
+
+          await getOne(req, res);
+        });
+
+        test('Then call Invoice.findById once', () => {
+          expect(Invoice.findById).toHaveBeenCalled();
+        });
+
+        test('Then call res.json once', () => {
+          expect(res.json).toHaveBeenCalled();
+        });
+      });
+
+      describe('And there is an error', () => {
+        beforeEach(async () => {
+          req = {
+            params: { invoiceId: 'mock' }
+          };
+
+          res = {
+            json: jest.fn(),
+            status: jest.fn(),
+            send: jest.fn()
+          };
+
+          Invoice.findById.mockRejectedValueOnce('findById error');
+
+          await getOne(req, res);
+        });
+
+        test('Then call res.status with a 500 error', () => {
+          expect(res.status).toHaveBeenCalledWith(500);
+        });
+
+        test('Then call res.send with find error', () => {
+          expect(res.send).toHaveBeenCalledWith('findById error');
         });
       });
     });
