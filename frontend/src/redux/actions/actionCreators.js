@@ -2,6 +2,9 @@ import axios from 'axios';
 import actionTypes from './actionTypes';
 
 const invoicesUrl = process.env.REACT_APP_API_CLIENT_URL;
+const urlSignUp = process.env.REACT_APP_URL_USER_SIGN_UP;
+const urlLogIn = process.env.REACT_APP_URL_USER_LOG_IN;
+const urlUserData = process.env.REACT_APP_URL_USER_DATA;
 
 export function getInvoices() {
   return async (dispatch) => {
@@ -94,6 +97,61 @@ export function deleteInvoice(invoiceId) {
     } catch (error) {
       dispatch({
         type: actionTypes.DELETE_INVOICE_ERROR
+      });
+    }
+  };
+}
+
+export function signUp(newUserInfo) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlSignUp, newUserInfo);
+      dispatch({
+        type: actionTypes.SIGN_UP,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.SIGN_UP,
+        user: {}
+      });
+    }
+  };
+}
+
+export function logIn(email, password) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(urlLogIn, { email, password });
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.LOG_IN,
+        user: {}
+      });
+    }
+  };
+}
+
+export function getUserData(token) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios(urlUserData, {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      });
+      dispatch({
+        type: actionTypes.GET_USER_DATA,
+        accesstoken: data
+      });
+    } catch (error) {
+      dispatch({
+        type: actionTypes.GET_USER_DATA,
+        accesstoken: {}
       });
     }
   };
