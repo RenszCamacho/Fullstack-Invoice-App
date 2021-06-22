@@ -9,14 +9,6 @@ function DashboardHeader({ invoices }) {
         <h1 className="description__title">Invoices</h1>
         <span className="description__invoices">{invoices}</span>
       </div>
-      <button
-        className="dashboard-header__btn"
-        type="button"
-        aria-label="drop down"
-      >
-        <span>Filter</span>
-        <em className="fas fa-chevron-down" />
-      </button>
       <div>
         <NewInvoiceBtn route="/newform" nameBtn="New" />
       </div>
