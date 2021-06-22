@@ -1,0 +1,55 @@
+@import '../../index.scss';
+
+.form-wrapper {
+	width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn .5s;
+
+    &__logo {
+        margin-bottom: 3rem;
+        width: 10rem;
+        animation: bounceInDown 1s;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        animation: bounceInLeft 2s;
+    }
+
+    &__form {
+        width: 80%;
+        max-width: 60rem;
+        animation: bounceInRight 2.5s;
+    }
+
+}
+
+.form {
+    &__label {
+        display: block;
+        margin-bottom: 1rem;
+
+        input {
+            text-align: center;
+            font-size: 2rem;
+        }
+    }
+
+
+    &__btn-wrapper {
+        width: 100%;
+        display: grid;
+        place-items: center;
+
+        button {
+            margin-top: 1rem;
+            padding: 1.6rem 4.4rem;
+        }
+    }
+}
