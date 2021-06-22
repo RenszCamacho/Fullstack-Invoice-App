@@ -18,10 +18,10 @@ function App() {
       <Router>
         <Switch>
           <Route path="/details/:invoiceId" component={Details} />
-          <Route path="/" exact component={Dashboard} />
+          <Route path="/" exact component={LogIn} />
           <Route path="/newform" component={NewForm} />
           <Route path="/editform" component={EditForm} />
-          <Route path="/logIn" component={LogIn} />
+          <Route path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
     </Provider>

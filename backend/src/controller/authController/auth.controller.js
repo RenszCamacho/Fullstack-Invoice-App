@@ -37,7 +37,8 @@ function authController() {
                 _id: user._id,
                 email: user.email,
                 name: user.name,
-                image: user.image
+                image: user.image,
+                postCode: user.postCode
               };
               const token = jwt.sign(
                 { user: data },

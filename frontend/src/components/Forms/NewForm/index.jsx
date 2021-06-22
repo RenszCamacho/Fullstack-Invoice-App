@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import dayjs from 'dayjs';
@@ -24,6 +24,7 @@ const defaultValues = {
 
 function NewForm({ history }) {
   const dispatch = useDispatch();
+  const currentProfile = useSelector((store) => store.accesstoken);
 
   const {
     control,
@@ -38,7 +39,8 @@ function NewForm({ history }) {
 
   const onSubmit = (data, event) => {
     const newInvoice = {
-      ...data
+      ...data,
+      name: currentProfile.user.name
     };
     dispatch(addInvoice(newInvoice));
 
@@ -242,7 +244,6 @@ function NewForm({ history }) {
               modify="primary"
               nameBtn="Save & Send"
               type="submit"
-              // onClick={redirect}
             />
           </div>
         </fieldset>

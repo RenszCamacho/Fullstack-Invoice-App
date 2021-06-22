@@ -14,7 +14,8 @@ passport.use(
             email,
             password,
             name: req.body.name,
-            image: req.body.image
+            image: req.body.image,
+            postCode: req.body.postCode
           }
         );
         return done(null, user);

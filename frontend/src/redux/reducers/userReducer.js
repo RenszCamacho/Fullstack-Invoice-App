@@ -6,8 +6,6 @@ export default function userReducer(user = {}, action) {
       return action.user;
     case actionTypes.LOG_IN:
       return action.user;
-    case actionTypes.GET_USER_DATA:
-      return action.user;
     default:
       return user;
   }

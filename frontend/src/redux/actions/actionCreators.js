@@ -141,17 +141,17 @@ export function getUserData(token) {
     try {
       const { data } = await axios(urlUserData, {
         headers: {
-          Authorization: `Bearer ${token}`
+          authorization: `Bearer ${token}`
         }
       });
       dispatch({
         type: actionTypes.GET_USER_DATA,
-        user: data
+        accesstoken: data
       });
     } catch (error) {
       dispatch({
         type: actionTypes.GET_USER_DATA,
-        user: {}
+        accesstoken: {}
       });
     }
   };
