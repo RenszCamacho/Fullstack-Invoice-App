@@ -10,6 +10,7 @@ import configureStore from './redux/store';
 import Details from './components/Details';
 import NewForm from './components/Forms/NewForm';
 import EditForm from './components/Forms/EditForm';
+import LogIn from './components/LogIn';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" exact component={Dashboard} />
           <Route path="/newform" component={NewForm} />
           <Route path="/editform" component={EditForm} />
+          <Route path="/logIn" component={LogIn} />
         </Switch>
       </Router>
     </Provider>
