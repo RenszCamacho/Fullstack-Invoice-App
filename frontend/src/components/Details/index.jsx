@@ -153,7 +153,7 @@ function Details() {
 
                 <RegularBtn
                   nameBtn="Delete"
-                  // data-testId="delete-button"
+                  data="delete-button"
                   modify="danger"
                   onClick={openModal}
                 />
