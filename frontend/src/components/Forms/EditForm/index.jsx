@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import { withRouter } from 'react-router-dom';
 import GoBack from '../../Buttons/GoBack';
 import Header from '../../Header';
-import EditFieldArray from '../EditFieldArray';
+import FieldArray from '../FieldArray';
 import RegularBtn from '../../Buttons/RegularBtn';
 import { updateInvoice } from '../../../redux/actions/actionCreators';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -60,12 +60,7 @@ function EditForm({ history, dataInvoice }) {
 
       <div className="form-container__wrap-title">
         <h2>
-          {`Edit #${
-            dataInvoice._id
-              .toUpperCase()
-              .slice(-5)
-          }`}
-
+          Edit Invoice
         </h2>
       </div>
 
@@ -81,7 +76,8 @@ function EditForm({ history, dataInvoice }) {
               Street Address
               <br />
               <input
-                // defaultValue={dataInvoice?.from?.address?.street}
+                name="street"
+                defaultValue={dataInvoice?.from?.address?.street}
                 {...register('from.address.street')}
               />
             </label>
@@ -92,7 +88,8 @@ function EditForm({ history, dataInvoice }) {
               City
               <br />
               <input
-                // defaultValue={dataInvoice?.from?.address?.city}
+                name="city"
+                defaultValue={dataInvoice?.from?.address?.city}
                 {...register('from.address.city')}
               />
             </label>
@@ -103,7 +100,7 @@ function EditForm({ history, dataInvoice }) {
               Post Code
               <br />
               <input
-                // defaultValue={dataInvoice?.from?.address?.postCode}
+                defaultValue={dataInvoice?.from?.address?.postCode}
                 {...register('from.address.postCode')}
               />
             </label>
@@ -114,7 +111,7 @@ function EditForm({ history, dataInvoice }) {
               Country
               <br />
               <input
-                // defaultValue={dataInvoice?.from?.address?.country}
+                defaultValue={dataInvoice?.from?.address?.country}
                 {...register('from.address.country')}
               />
             </label>
@@ -133,7 +130,7 @@ function EditForm({ history, dataInvoice }) {
               Client&apos;s Name
               <br />
               <input
-                // defaultValue={dataInvoice?.to?.name}
+                defaultValue={dataInvoice?.to?.name}
                 {...register('to.name')}
               />
             </label>
@@ -144,7 +141,7 @@ function EditForm({ history, dataInvoice }) {
               Client&apos;s Email
               <br />
               <input
-                // defaultValue={dataInvoice?.to?.email}
+                defaultValue={dataInvoice?.to?.email}
                 {...register('to.email')}
               />
             </label>
@@ -155,7 +152,7 @@ function EditForm({ history, dataInvoice }) {
               Street Address
               <br />
               <input
-                // defaultValue={dataInvoice?.to?.address.street}
+                defaultValue={dataInvoice?.to?.address.street}
                 {...register('to.address.street')}
               />
             </label>
@@ -165,7 +162,7 @@ function EditForm({ history, dataInvoice }) {
             <label htmlFor="city">
               City
               <input
-                // defaultValue={dataInvoice?.to?.address.city}
+                defaultValue={dataInvoice?.to?.address.city}
                 {...register('to.address.city')}
               />
             </label>
@@ -175,7 +172,7 @@ function EditForm({ history, dataInvoice }) {
             <label htmlFor="postCode">
               Post Code
               <input
-                // defaultValue={dataInvoice?.to?.address.postCode}
+                defaultValue={dataInvoice?.to?.address.postCode}
                 {...register('to.address.postCode')}
               />
             </label>
@@ -185,7 +182,7 @@ function EditForm({ history, dataInvoice }) {
             <label htmlFor="country">
               Country
               <input
-                // defaultValue={dataInvoice?.to?.address.country}
+                defaultValue={dataInvoice?.to?.address.country}
                 {...register('to.address.country')}
               />
             </label>
@@ -203,7 +200,7 @@ function EditForm({ history, dataInvoice }) {
               control={control}
               render={({ field }) => (
                 <DatePicker
-                  // value={dayjs(dataInvoice?.invoiceDate).format('DD MMM YYYY')}
+                  value={dayjs(dataInvoice?.invoiceDate).format('DD MMM YYYY')}
                   className="input-container__input"
                   onChange={(event) => field.onChange(event)}
                   selected={field.value}
@@ -223,7 +220,7 @@ function EditForm({ history, dataInvoice }) {
               control={control}
               render={({ field }) => (
                 <DatePicker
-                  // value={dayjs(dataInvoice?.paymentTerms).format('DD MMM YYYY')}
+                  value={dayjs(dataInvoice?.paymentTerms).format('DD MMM YYYY')}
                   className="input-container__input"
                   onChange={(event) => field.onChange(event)}
                   selected={field.value}
@@ -239,7 +236,7 @@ function EditForm({ history, dataInvoice }) {
             <label htmlFor="projectDescription">
               Project Description
               <input
-                // defaultValue={dataInvoice?.projectDescription}
+                defaultValue={dataInvoice?.projectDescription}
                 {...register('projectDescription')}
               />
             </label>
@@ -253,7 +250,7 @@ function EditForm({ history, dataInvoice }) {
             <legend>Item List</legend>
           </div>
 
-          <EditFieldArray
+          <FieldArray
             {...{
               control, register, defaultValues, getValues, setValue, errors
             }}
