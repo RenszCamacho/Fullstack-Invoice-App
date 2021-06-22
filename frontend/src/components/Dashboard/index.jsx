@@ -29,7 +29,7 @@ function Dashboard() {
       <main className="dashboard-container">
         <Header />
         <DashboardHeader
-          userInvoices={userInvoices.length
+          invoices={userInvoices.length
             ? `There are ${userInvoices.length} invoices`
             : 'No invoices'}
         />

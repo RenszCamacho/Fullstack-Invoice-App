@@ -17,7 +17,7 @@ function LogIn() {
 
   return (
     <>
-      <Route exact path="/login">
+      <Route exact path="/">
         {user?.token ? <Redirect to="/dashboard" /> : <Redirect to="/" />}
       </Route>
       <form onSubmit={handleSubmit}>
