@@ -1,4 +1,4 @@
-<img src="./frontend/src/assets/invoice-app.png" alt="home-page" style="height: 100px; width:100px;" />
+<img src="https://trello-attachments.s3.amazonaws.com/60755d2282c14f477515af94/60d242131d5e1688720bb05f/42d927b508b0770843a92d837a99d7a7/invoice-app.png" alt="home-page" style="height: 100px; width:100px;" />
 
 
 # Invoices App
@@ -12,7 +12,7 @@ git clone https://github.com/SkylabCoders/Renszo_Final-Project-202104
 cd Renszo_Final-Project-202104
 ```
 
-## 1 - Install Backend Dependencies
+## Install Backend Dependencies
 
 ```bash
 #Using npm
@@ -22,11 +22,11 @@ npm install
 ## Run it live
 
 ```bash
-#Build dev
+#Run dev
 npm run dev or yarn dev
 ```
 
-## 2 - Install Frontend Dependencies
+## Install Frontend Dependencies
 
 ```bash
 #Using npm
