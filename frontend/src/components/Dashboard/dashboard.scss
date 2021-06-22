@@ -89,7 +89,7 @@
     cursor: pointer;
     box-shadow: 0 10px 10px -10px hsla(232, 38%, 45%, 0.1);
     padding: 3rem 2.5rem;
-    transition: all 100ms ease;
+    transition: all 200ms ease;
     
     @include rwd(medium) {
         display: flex;
@@ -101,6 +101,8 @@
 
     &:hover {
         border: 1px solid $primary-brand-100;
+        animation: pulse 1s;
+        animation-timing-function: ease-in-out;
     }
 }
 
