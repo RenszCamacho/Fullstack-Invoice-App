@@ -101,8 +101,6 @@
 
     &:hover {
         border: 1px solid $primary-brand-100;
-        // animation: pulse 1s;
-        // animation-timing-function: ease-in-out;
         animation-timing-function: ease-in-out;
         animation: headShake 1s;
     }
