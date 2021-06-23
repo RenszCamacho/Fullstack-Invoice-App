@@ -19,7 +19,10 @@ describe('Dashboard component', () => {
               status: true,
               to: { name: 'sara' },
               items: [{ total: 4 }]
-            }]
+            }],
+            user: {
+              toke: 'token'
+            }
           }
         });
       });
@@ -34,9 +37,72 @@ describe('Dashboard component', () => {
               _id: '64264262',
               paymentTerms: 'terms',
               status: false,
+              from: {
+                address: { postCode: 'postCode' }
+              },
               to: { name: 'sara' },
               items: [{ total: 4 }]
-            }]
+            }],
+            user: {
+              toke: 'token'
+            },
+            accesstoken: {
+              user: { postCode: 'postCode' }
+            }
+          }
+
+        });
+      });
+
+      test('Then should call getInvoice', () => {
+        getInvoices.mockReturnValueOnce({ type: '' });
+
+        render(<Dashboard />, {
+
+          initialState: {
+            invoices: [{
+              _id: '64264262',
+              paymentTerms: 'terms',
+              status: true,
+              from: {
+                address: { postCode: 'postCode' }
+              },
+              to: { name: 'sara' },
+              items: [{ total: 4 }]
+            }],
+            user: {
+              toke: 'token'
+            },
+            accesstoken: {
+              user: { postCode: 'postCode' }
+            }
+          }
+
+        });
+      });
+
+      test('Then should call getInvoice', () => {
+        getInvoices.mockReturnValueOnce({ type: '' });
+
+        render(<Dashboard />, {
+
+          initialState: {
+            invoices: [{
+              _id: '64264262',
+              paymentTerms: 'terms',
+              status: false,
+              from: {
+                address: { postCode: 'postCode1' }
+              },
+              to: { name: 'sara' },
+              items: [{ total: 4 }]
+            }],
+            user: {
+              toke: 'token'
+            },
+            accesstoken: {
+              user: { postCode: 'postCode' }
+            }
           }
 
         });

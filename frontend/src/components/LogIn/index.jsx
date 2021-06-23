@@ -34,6 +34,7 @@ function LogIn() {
           <label className="form__label" htmlFor="email">
             Email
             <input
+              data-testid="data-email"
               onChange={
               (event) => setEmail(event.target.value)
               }
@@ -48,6 +49,7 @@ function LogIn() {
           >
             Password
             <input
+              data-testid="data-password"
               onChange={
               (event) => setPassword(event.target.value)
               }
@@ -60,7 +62,7 @@ function LogIn() {
             <RegularBtn
               nameBtn="LogIn"
               type="submit"
-              data="login-button"
+              data="data-button"
             />
           </div>
         </form>
