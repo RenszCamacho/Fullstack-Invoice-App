@@ -1,10 +1,16 @@
 import React from 'react';
-import avatar from '../../../assets/avatar.png';
+import { useSelector } from 'react-redux';
 
 function Avatar() {
+  const avatar = useSelector((store) => store.accesstoken);
+
   return (
     <div className="header-container__avatar">
-      <img src={avatar} alt="avatar" />
+      <img
+        className="avatar__logo"
+        src={avatar?.user?.image}
+        alt="avatar"
+      />
     </div>
   );
 }
