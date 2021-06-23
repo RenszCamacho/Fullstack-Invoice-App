@@ -8,11 +8,11 @@ describe('Given a invoicesReducer', () => {
     test('Then should return the current state of the invoices', () => {
       const getInvoices = {
         type: actionTypes.GET_ALL_INVOICES,
-        invoices: invoicesState[0]
+        invoices: invoicesState
       };
 
       const result = invoicesReducer(undefined, getInvoices);
-      expect(result).toEqual(invoicesState[0]);
+      expect(result).toEqual(invoicesState);
     });
   });
 });
