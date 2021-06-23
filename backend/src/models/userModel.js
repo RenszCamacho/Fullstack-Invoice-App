@@ -1,19 +1,15 @@
 const { model, Schema } = require('mongoose');
 
 const userSchema = Schema({
-  username: String,
   email: String,
   password: String,
-  profiles: [{
-    address: {
-      street: String,
-      city: String,
-      postCode: String,
-      country: String
-    },
-    idNumber: String,
-    idType: String
-  }]
+  name: String,
+  image: String,
+  postCode: String
 });
+
+userSchema.methods.isValidPassword = function isValidPassword(password) {
+  return password === this.password;
+};
 
 module.exports = model('User', userSchema);

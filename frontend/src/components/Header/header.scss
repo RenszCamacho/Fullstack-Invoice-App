@@ -31,3 +31,11 @@
 		border-left: 1px solid #80808045;
 	}
 }
+
+.avatar__logo {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 20px;
+    display: block;
+    object-fit: cover;
+}
