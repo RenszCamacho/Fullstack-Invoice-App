@@ -1,28 +1,42 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import EditForm from './index';
-import { render, screen } from '../../../utils/test-utils';
+import { render, screen, fireEvent } from '../../../utils/test-utils';
+import '@testing-library/jest-dom';
+
+jest.mock('../../../redux/actions/actionCreators');
 
 global.scrollTo = jest.fn();
 
-describe('Edit Form', () => {
-  describe('Given a EditForm component', () => {
-    describe('When is submitted with valid inputs', () => {
-      test('Then calls the onSubmit function', async () => {
-        render(<EditForm />, {
-          initialState: {
-            invoice: [{
-              _id: '64264262',
-              paymentTerms: 'terms',
-              status: false,
-              to: { name: 'sara' },
-              items: [{ total: 4 }]
-            }]
+describe('EditForm component', () => {
+  describe('Given a login form', () => {
+    describe('When is submitted', () => {
+      test('then should receive email and password', () => {
+        render(
+          <BrowserRouter>
+            <EditForm />
+          </BrowserRouter>,
+
+          {
+            initialState: {
+              invoices: [{
+                street: '',
+                city: '',
+                postCode: ''
+              }]
+            }
           }
-        });
+        );
 
-        const result = screen.getByRole('Street Address', { name: 'from.address.street' });
-
-        expect(result).toBeInTheDocument();
+        const street = screen.getByTestId('street');
+        const city = screen.getByTestId('city');
+        const postCode = screen.getByTestId('postCode');
+        fireEvent.change(street, { target: { value: 'Endymion Road' } });
+        fireEvent.change(city, { target: { value: 'London' } });
+        fireEvent.change(postCode, { target: { value: 'SW2 2BU' } });
+        expect(street).toBeInTheDocument();
+        expect(city).toBeInTheDocument();
+        expect(postCode).toBeInTheDocument();
       });
     });
   });

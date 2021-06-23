@@ -25,9 +25,13 @@ export default function Fields({
         {fields.map((item, index) => (
           <li className="list-items__item" key={item.id}>
 
-            <label className="item__label" htmlFor="itemList">
+            <label
+              className="item__label"
+              htmlFor="itemList"
+            >
               Item Name
               <input
+                data-testid="item"
                 defaultValue={item.name}
                 {...register(`items[${index}].name`)}
                 placeholder="Product Name"
@@ -37,6 +41,7 @@ export default function Fields({
             <label className="item__label" htmlFor="itemList">
               Qty.
               <input
+                data-testid="quantity"
                 {...register(`items[${index}].quantity`)}
                 placeholder="Qty"
               />
@@ -46,6 +51,7 @@ export default function Fields({
             <label className="item__label" htmlFor="itemList">
               Price
               <input
+                data-testid="price"
                 {...register(`items[${index}].price`)}
                 placeholder="Price"
               />
@@ -54,6 +60,7 @@ export default function Fields({
             <label className="item__label item__label--total" htmlFor="itemList">
               Total
               <input
+                data-testid="total"
                 {...register(`items[${index}].total`)}
               />
             </label>

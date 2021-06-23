@@ -71,7 +71,10 @@ function NewForm({ history }) {
             <label className="from-street__label" htmlFor="street">
               Street Address
               <br />
-              <input {...register('from.address.street', { required: true })} />
+              <input
+                data-testid="street"
+                {...register('from.address.street', { required: true })}
+              />
             </label>
           </div>
 
@@ -79,7 +82,10 @@ function NewForm({ history }) {
             <label className="from-city__label" htmlFor="city">
               City
               <br />
-              <input {...register('from.address.city', { required: true })} />
+              <input
+                data-testid="city"
+                {...register('from.address.city', { required: true })}
+              />
             </label>
           </div>
 
@@ -87,7 +93,10 @@ function NewForm({ history }) {
             <label className="from-code__label" htmlFor="postCode">
               Post Code
               <br />
-              <input {...register('from.address.postCode', { required: true })} />
+              <input
+                data-testid="postCode"
+                {...register('from.address.postCode', { required: true })}
+              />
             </label>
           </div>
 
@@ -95,7 +104,10 @@ function NewForm({ history }) {
             <label className="from-country__label" htmlFor="country">
               Country
               <br />
-              <input {...register('from.address.country', { required: true })} />
+              <input
+                data-testid="country"
+                {...register('from.address.country', { required: true })}
+              />
             </label>
           </div>
 

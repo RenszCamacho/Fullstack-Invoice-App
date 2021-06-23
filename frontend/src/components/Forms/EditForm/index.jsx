@@ -76,6 +76,7 @@ function EditForm({ history, dataInvoice }) {
               Street Address
               <br />
               <input
+                data-testid="street"
                 name="street"
                 defaultValue={dataInvoice?.from?.address?.street}
                 {...register('from.address.street')}
@@ -88,6 +89,7 @@ function EditForm({ history, dataInvoice }) {
               City
               <br />
               <input
+                data-testid="city"
                 name="city"
                 defaultValue={dataInvoice?.from?.address?.city}
                 {...register('from.address.city')}
@@ -100,6 +102,7 @@ function EditForm({ history, dataInvoice }) {
               Post Code
               <br />
               <input
+                data-testid="postCode"
                 defaultValue={dataInvoice?.from?.address?.postCode}
                 {...register('from.address.postCode')}
               />
@@ -111,6 +114,7 @@ function EditForm({ history, dataInvoice }) {
               Country
               <br />
               <input
+                data-testid="country"
                 defaultValue={dataInvoice?.from?.address?.country}
                 {...register('from.address.country')}
               />
