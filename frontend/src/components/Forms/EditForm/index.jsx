@@ -37,12 +37,12 @@ function EditForm({ history, dataInvoice }) {
     defaultValues
   });
 
-  const onSubmit = (data, event) => {
+  const onSubmit = async (data, event) => {
     const newData = {
       ...dataInvoice, ...data
     };
 
-    dispatch(updateInvoice(newData));
+    await dispatch(updateInvoice(newData));
 
     history.push('/');
 

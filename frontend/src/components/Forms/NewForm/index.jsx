@@ -37,12 +37,12 @@ function NewForm({ history }) {
     defaultValues
   });
 
-  const onSubmit = (data, event) => {
+  const onSubmit = async (data, event) => {
     const newInvoice = {
       ...data,
       name: currentProfile.user.name
     };
-    dispatch(addInvoice(newInvoice));
+    await dispatch(addInvoice(newInvoice));
 
     history.push('/');
 
