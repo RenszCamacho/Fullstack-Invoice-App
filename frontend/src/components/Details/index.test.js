@@ -43,6 +43,28 @@ describe('Dashboard component', () => {
             }
           }
         });
+
+        fireEvent.click(screen.getByTestId('delete-button'));
+      });
+    });
+
+    describe('When is render with the initial state', () => {
+      test('Then should call getOneInvoice', () => {
+        getOneInvoice.mockReturnValueOnce({ type: '' });
+
+        render(<Details />, {
+          initialState: {
+            invoice: {
+              _id: '64264262',
+              paymentTerms: 'terms',
+              status: true,
+              to: { name: 'sara' },
+              items: [{ total: 4 }]
+            }
+          }
+        });
+
+        fireEvent.click(screen.getByTestId('edit-button'));
       });
     });
   });

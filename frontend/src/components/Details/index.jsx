@@ -148,6 +148,7 @@ function Details() {
                 <RegularBtn
                   nameBtn="Edit"
                   modify="info"
+                  data="edit-button"
                   onClick={openEditForm}
                 />
 

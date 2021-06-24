@@ -65,11 +65,12 @@ export default function Fields({
               />
             </label>
 
-            <button className="item__btn" type="button" onClick={() => remove(index)}>
+            <button data-testid="delete-product" className="item__btn" type="button" onClick={() => remove(index)}>
               <em className="fas fa-trash" />
             </button>
 
             <button
+              data-testid="delete-product"
               className="fieldset-items__btn"
               type="button"
               onClick={

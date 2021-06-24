@@ -38,12 +38,13 @@ function Modal({
           <div className="box__btn-wrapper">
             <RegularBtn
               modify="info"
-              data="cancel-button"
+              data="modal-cancel-button"
               nameBtn="Cancel"
-              onClick={() => setShowModal((previous) => !previous)}
+              onClick={() => setShowModal(!showModal)}
             />
             <RegularBtn
               modify="danger"
+              data="modal-delete-button"
               nameBtn="Delete"
               onClick={deleteModal}
             />
