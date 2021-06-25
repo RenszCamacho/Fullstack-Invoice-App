@@ -15,7 +15,7 @@ function Dashboard() {
   const invoices = useSelector((store) => store.invoices);
   const currentProfile = useSelector((store) => store.accesstoken);
   const userInvoices = invoices.filter(
-    (invoice) => invoice.from.address.postCode === currentProfile.user.postCode
+    (invoice) => invoice.from.address?.postCode === currentProfile.user?.postCode
   );
   const user = useSelector((store) => store.user);
 

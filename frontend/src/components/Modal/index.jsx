@@ -12,8 +12,8 @@ function Modal({
   const dispatch = useDispatch();
   const history = useHistory();
 
-  function deleteModal() {
-    dispatch(deleteInvoice(invoice));
+  async function deleteModal() {
+    await dispatch(deleteInvoice(invoice));
     history.push('/');
   }
 
